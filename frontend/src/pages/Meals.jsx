@@ -1,4 +1,4 @@
-export default function Home() {
+export default function Meals() {
     return (
         <>
             <h1>My Title</h1>
