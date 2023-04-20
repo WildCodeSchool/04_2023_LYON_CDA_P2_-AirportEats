@@ -6,7 +6,6 @@ import "./App.css";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
 export default function App() {
-
   const location = useLocation();
   const navigate = useNavigate();
   const isMobile = useMediaQuery("(max-width: 428px)");
