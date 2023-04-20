@@ -1,14 +1,17 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Payment from "./pages/Payment";
-import Cart from "./pages/Cart";
-import Meals from "./pages/Meals";
-import Confirmation from "./pages/Confirmation";
+import React, { useEffect } from "react";
 import "./App.css";
 import CategoryCard from "./components/CategoryCard";
 
 export default function App() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (location.pathname === "/") {
+      navigate("/meals");
+    }
+  }, [location]);
+
   return (
     <Router>
       <div className="App">
