@@ -9,7 +9,13 @@ import allCategories from "../ressources/allCategories";
 export default function ScrollableTabsButton() {
   const { category } = useParams();
 
-  const [value, setValue] = React.useState(null);
+  const [value, setValue] = React.useState(
+    category
+      ? allCategories.filter(
+          (thisCategory) => thisCategory.cName === category
+        )[0].id
+      : false
+  );
 
   const navigate = useNavigate();
 
