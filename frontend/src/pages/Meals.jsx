@@ -1,13 +1,13 @@
-// import { useLoaderData } from "react-router-dom";
-import Stepper from "@components/Stepper";
+import { useLoaderData, useParams } from "react-router-dom";
 
 export default function Meals() {
-  // const meals = useLoaderData();
+  const { category } = useParams();
+  const meals = useLoaderData();
+  console.info(meals);
 
   return (
     <>
-      <Stepper />
-      <h1>My Title</h1>
+      <h1>{category}</h1>
       <p>My Body</p>
     </>
   );

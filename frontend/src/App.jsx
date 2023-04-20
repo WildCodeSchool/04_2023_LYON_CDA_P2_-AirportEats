@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
 export default function App() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (location.pathname === "/") {
+      navigate("/meals");
+    }
+  }, [location]);
+
   return (
     <div className="App">
       <h1>hello world</h1>
