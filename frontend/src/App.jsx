@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./App.css";
-import CategoryCard from "./components/CategoryCard";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
 export default function App() {
   const location = useLocation();
@@ -13,19 +13,11 @@ export default function App() {
   }, [location]);
 
   return (
-    <Router>
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/pages/Meals" element={<Meals />} />
-          <Route path="/pages/cart" element={<Cart />} />
-          <Route path="/pages/payment" element={<Payment />} />
-          <Route path="/pages/Confirmation" element={<Confirmation />} />
-        </Routes>
-        <div>
-          <CategoryCard />
-        </div>
-      </div>
-    </Router>
+    <div className="App">
+      <h1>hello world</h1>
+      <main>
+        <Outlet />
+      </main>
+    </div>
   );
 }
