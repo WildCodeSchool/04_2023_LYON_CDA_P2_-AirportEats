@@ -1,5 +1,4 @@
-import CategoryCard from "@components/CategoryCard";
-import { Box, Stack } from "@mui/material";
+import ScrollableTabsButton from "@components/ScrollableTabsButton";
 import { Outlet, useParams } from "react-router-dom";
 
 export default function Home() {
@@ -84,29 +83,10 @@ export default function Home() {
     <>
       <h1>Category Menu</h1>
       <p>Map Category</p>
-      <Box>
-        <Stack
-          direction="row"
-          justifyContent="center"
-          alignItems="center"
-          spacing={{ xs: 2, lg: 3 }}
-        >
-          {allCategories.map((thisCategory) => {
-            return (
-              <CategoryCard
-                key={thisCategory.id}
-                name={thisCategory.cName}
-                imgSrc={thisCategory.imgSrc}
-                active={
-                  category === thisCategory.cName ||
-                  category === thisCategory.cName.toLowerCase()
-                }
-              />
-            );
-          })}
-        </Stack>
-      </Box>
-
+      <ScrollableTabsButton />
+      {allCategories.map((thisCategory) => {
+        return <p>{thisCategory.cName}</p>;
+      })}
       <h1>Meals</h1>
       <h3>{category}</h3>
       <Outlet />
