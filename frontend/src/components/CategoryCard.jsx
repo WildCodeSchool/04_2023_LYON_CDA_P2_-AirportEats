@@ -16,13 +16,16 @@ export default function CategoryCard({ name, imgSrc, active }) {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        margin: 1,
         textDecoration: "none",
       }}
     >
       <Avatar src={imgSrc} alt={name} sx={active ? styleActive : null} />
-      {/* TO TEST : change color */}
-      <Typography variant="caption" display="block" color="primary">
+      <Typography
+        variant="caption"
+        display="block"
+        color="primary"
+        fontWeight={active ? "bold" : null}
+      >
         {name}
       </Typography>
     </Box>
