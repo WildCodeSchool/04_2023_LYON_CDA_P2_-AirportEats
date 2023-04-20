@@ -6,7 +6,7 @@ import Cart from "./pages/Cart";
 import Meals from "./pages/Meals";
 import Confirmation from "./pages/Confirmation";
 import "./App.css";
-import CategoryCard from "./components/CategoryCard.jsx"
+import CategoryCard from "./components/CategoryCard";
 
 export default function App() {
   return (
@@ -20,7 +20,7 @@ export default function App() {
           <Route path="/pages/Confirmation" element={<Confirmation />} />
         </Routes>
         <div>
-          <CategoryCard/>
+          <CategoryCard />
         </div>
       </div>
     </Router>
