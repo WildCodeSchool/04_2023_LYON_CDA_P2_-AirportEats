@@ -1,8 +1,5 @@
 import * as React from "react";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import Box from "@mui/material/Box";
-import { Avatar } from "@mui/material";
+import { Avatar, Box, Tab, Tabs } from "@mui/material";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import allCategories from "../ressources/allCategories";
 
