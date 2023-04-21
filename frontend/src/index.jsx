@@ -8,17 +8,17 @@ import App from "./App";
 // import allCategories from "./ressources/allCategories";
 // import { redirect } from "react-router-dom";
 
-const loadApi = async (category) => {
-  // if (allCategories.includes(category)) {
-  const meals = await fetch(
-    `https://www.themealdb.com/api/json/v1/1/filter.php?a=${category}`
-  )
-    .then((response) => response.json())
-    .then((data) => data)
-    .catch((err) => console.error(err));
-  return meals;
-  // } else return redirect("/meals");
-};
+// const loadApi = async (category) => {
+//   // if (allCategories.includes(category)) {
+//   const meals = await fetch(
+//     `https://www.themealdb.com/api/json/v1/1/filter.php?a=${category}`
+//   )
+//     .then((response) => response.json())
+//     .then((data) => data)
+//     .catch((err) => console.error(err));
+//   return meals;
+//   // } else return redirect("/meals");
+// };
 
 const Routes = [
   {
@@ -32,11 +32,11 @@ const Routes = [
           {
             path: ":category",
             element: <Meals />,
-            loader: ({ params }) => {
-              return loadApi(params.category).then((response) => {
-                return response;
-              });
-            },
+            // loader: ({ params }) => {
+            //   return loadApi(params.category).then((response) => {
+            //     return response;
+            //   });
+            // },
           },
         ],
       },
