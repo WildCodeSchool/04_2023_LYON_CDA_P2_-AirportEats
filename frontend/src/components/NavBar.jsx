@@ -19,10 +19,9 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import LunchDiningOutlinedIcon from "@mui/icons-material/LunchDiningOutlined";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
-import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import Badge from "@mui/material/Badge";
+import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -73,6 +72,25 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 export default function PersistentDrawerLeft() {
+  // Pour rajouter l'icon il faut aller dans le drawer
+  const drawerItems = [
+    {
+      id: 0,
+      text: "Home",
+      link: "/",
+    },
+    {
+      id: 1,
+      text: "Cart",
+      link: "/cart",
+    },
+    {
+      id: 2,
+      text: "Favorites",
+      link: "/favorites",
+    },
+  ];
+
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -107,7 +125,13 @@ export default function PersistentDrawerLeft() {
             AirportEats
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
-          <IconButton size="large" aria-label="show my cart" color="black">
+          <IconButton
+            size="large"
+            aria-label="show my cart"
+            color="black"
+            component={Link}
+            to="/cart"
+          >
             <Badge badgeContent={4} color="error">
               <ShoppingBagOutlinedIcon />
             </Badge>
@@ -121,7 +145,6 @@ export default function PersistentDrawerLeft() {
           "& .MuiDrawer-paper": {
             width: drawerWidth,
             boxSizing: "border-box",
-            borderRadius: "7px",
           },
         }}
         variant="persistent"
@@ -139,43 +162,19 @@ export default function PersistentDrawerLeft() {
         </DrawerHeader>
         <Divider />
         <List>
-          {["Home", "Order", "Favorites", "Menu"].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton sx={{ margin: "13px", borderRadius: "12px" }}>
-                {index === 0 && (
-                  <ListItemIcon>
-                    <HomeOutlinedIcon />
-                  </ListItemIcon>
-                )}
-                {index === 1 && (
-                  <ListItemIcon>
-                    <ShoppingCartOutlinedIcon />
-                  </ListItemIcon>
-                )}
-                {index === 2 && (
-                  <ListItemIcon>
-                    <FavoriteBorderOutlinedIcon />
-                  </ListItemIcon>
-                )}
-                {index === 3 && (
-                  <ListItemIcon>
-                    <LunchDiningOutlinedIcon />
-                  </ListItemIcon>
-                )}
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {["Settings"].map((text) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton sx={{ margin: "13px", borderRadius: "12px" }}>
+          {drawerItems.map((item) => (
+            <ListItem key={item.id} disablePadding>
+              <ListItemButton
+                sx={{ margin: "13px", borderRadius: "12px" }}
+                component={Link}
+                to={item.link}
+              >
                 <ListItemIcon>
-                  <SettingsOutlinedIcon />
+                  {item.id === 0 && <HomeOutlinedIcon />}
+                  {item.id === 1 && <ShoppingCartOutlinedIcon />}
+                  {item.id === 2 && <FavoriteBorderOutlinedIcon />}
                 </ListItemIcon>
-                <ListItemText primary={text} />
+                <ListItemText primary={item.text} />
               </ListItemButton>
             </ListItem>
           ))}
