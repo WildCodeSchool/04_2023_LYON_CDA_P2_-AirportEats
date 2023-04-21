@@ -3,27 +3,29 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import { Avatar } from "@mui/material";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import allCategories from "../ressources/allCategories";
 
 export default function ScrollableTabsButton() {
   const { category } = useParams();
 
-  const [value, setValue] = React.useState(
-    category
-      ? allCategories.filter(
-          (thisCategory) => thisCategory.cName === category
-        )[0].id
-      : false
-  );
+  const [value, setValue] = React.useState(category || false);
 
   const navigate = useNavigate();
 
   const handleChange = (event, newValue) => {
-    navigate(`/meals/${allCategories[newValue].cName}`);
+    navigate(`/meals/${newValue}`);
     setValue(newValue);
   };
-  console.info(category);
+
+  const location = useLocation().pathname;
+
+  React.useEffect(() => {
+    if (location === "/meals") {
+      setValue(false);
+    }
+  }, [location]);
+
   return (
     <Box sx={{ bgcolor: "background.paper" }}>
       <Tabs
@@ -40,6 +42,7 @@ export default function ScrollableTabsButton() {
             <Tab
               key={thisCategory.id}
               label={thisCategory.cName}
+              value={thisCategory.cName}
               icon={
                 <Avatar alt={thisCategory.cName} src={thisCategory.imgSrc} />
               }
