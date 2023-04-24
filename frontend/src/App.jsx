@@ -18,11 +18,12 @@ export default function App() {
 
   return (
     <div className="App">
+      {isMobile ? null : <NavBar />}
       <h1>hello world</h1>
-      {isMobile ? <BottomBar /> : <NavBar />}
       <main>
         <Outlet />
       </main>
+      {isMobile ? <BottomBar /> : null}
     </div>
   );
 }

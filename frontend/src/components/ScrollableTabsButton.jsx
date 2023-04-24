@@ -32,7 +32,6 @@ export default function ScrollableTabsButton() {
         scrollButtons="auto"
         allowScrollButtonsMobile={false}
         aria-label="scrollable prevent tabs example"
-        TabIndicatorProps={{ style: { background: "salmon" } }}
       >
         {allCategories.map((thisCategory) => {
           return (
