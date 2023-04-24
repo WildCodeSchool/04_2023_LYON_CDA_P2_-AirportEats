@@ -5,7 +5,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useState } from "react";
-import { Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 
 export default function Payment() {
   const [gate, setGate] = useState("");
@@ -47,7 +47,7 @@ export default function Payment() {
       <Box sx={{ display: "flex", justifyContent: "left", p: 1, ml: 77 }}>
         <TextField id="phone-number" label="Phone number" variant="standard" />
       </Box>
-      <Typography sx={{ pt: 10 }}>Payment Method</Typography>
+      <Typography sx={{ pt: 5 }}>Payment Method</Typography>
       <Box sx={{ display: "flex", justifyContent: "center", ml: 10 }}>
         <TextField
           id="card-number"
@@ -65,6 +65,12 @@ export default function Payment() {
       <Box sx={{ display: "flex", justifyContent: "left", ml: 77 }}>
         <TextField id="cryptogram" label="Cryptogram" variant="standard" />
       </Box>
+      <Button
+        variant="contained"
+        sx={{ m: 5, borderRadius: 3, backgroundColor: "#e1b1b1" }}
+      >
+        Pay
+      </Button>
     </>
   );
 }
