@@ -65,7 +65,7 @@ export default function Meals() {
         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
           {mealsDetails.map((mealsDetail) => {
             return (
-              <Grid item xs={3}>
+              <Grid item md={3} xs={8}>
                 <MealCard
                   key={mealsDetail.id}
                   imgSrc={mealsDetail.imgSrc}

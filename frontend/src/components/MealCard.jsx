@@ -10,7 +10,7 @@ import PropTypes from "prop-types";
 
 export default function MealCard({ imgSrc, mName }) {
   return (
-    <Card sx={{ maxWidth: 275, height: 150, display: "flex" }}>
+    <Card sx={{ maxWidth: 300, height: 150, display: "flex" }}>
       <CardHeader
         sx={{ display: "flex", pr: 2 }}
         avatar={
