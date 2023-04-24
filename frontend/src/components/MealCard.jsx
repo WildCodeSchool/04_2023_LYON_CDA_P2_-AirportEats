@@ -4,24 +4,35 @@ import CardHeader from "@mui/material/CardHeader";
 import CardActions from "@mui/material/CardActions";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
-import { red } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import { Typography } from "@mui/material";
 
 export default function MealCard() {
   return (
-    <Card sx={{ maxWidth: 345, height: 150 }}>
+    <Card sx={{ maxWidth: 275, height: 150, display: "flex" }}>
       <CardHeader
+        sx={{ display: "flex", pr: 2 }}
         avatar={
           <Avatar
-            sx={{ bgcolor: red[500] }}
+            sx={{ width: 75, height: 75 }}
             aria-label="recipe"
             src="https://www.themealdb.com/images/media/meals/wpputp1511812960.jpg/preview"
           />
         }
-        title="Shrimp and Chorizo Paella"
+        title={
+          <Typography variant="subtitle2">Shrimp and Chorizo Paella</Typography>
+        }
+        subheader={
+          <Typography
+            variant="caption"
+            sx={{ color: "#e1b1b1", fontWeight: "bold" }}
+          >
+            From the Fork
+          </Typography>
+        }
       />
-      <CardActions>
-        <IconButton aria-label="add to favorites">
+      <CardActions sx={{ display: "flex", justifyContent: "flex-end", p: 2 }}>
+        <IconButton aria-label="add to favorites" sx={{ p: 0 }}>
           <FavoriteIcon />
         </IconButton>
       </CardActions>
