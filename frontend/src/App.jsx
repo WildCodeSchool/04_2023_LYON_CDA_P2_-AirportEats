@@ -4,7 +4,6 @@ import BottomBar from "@components/BottomBar";
 import React, { useEffect } from "react";
 import "./App.css";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import MealCard from "@components/MealCard";
 
 export default function App() {
   const location = useLocation().pathname;
@@ -22,7 +21,6 @@ export default function App() {
       <h1>hello world</h1>
       {isMobile ? <BottomBar /> : <NavBar />}
       <main>
-        <MealCard />
         <Outlet />
       </main>
     </div>

@@ -6,8 +6,9 @@ import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Typography } from "@mui/material";
+import PropTypes from "prop-types";
 
-export default function MealCard() {
+export default function MealCard({ imgSrc, mName }) {
   return (
     <Card sx={{ maxWidth: 275, height: 150, display: "flex" }}>
       <CardHeader
@@ -16,12 +17,10 @@ export default function MealCard() {
           <Avatar
             sx={{ width: 75, height: 75 }}
             aria-label="recipe"
-            src="https://www.themealdb.com/images/media/meals/wpputp1511812960.jpg/preview"
+            src={imgSrc}
           />
         }
-        title={
-          <Typography variant="subtitle2">Shrimp and Chorizo Paella</Typography>
-        }
+        title={<Typography variant="subtitle2">{mName}</Typography>}
         subheader={
           <Typography
             variant="caption"
@@ -39,3 +38,8 @@ export default function MealCard() {
     </Card>
   );
 }
+
+MealCard.propTypes = {
+  mName: PropTypes.string.isRequired,
+  imgSrc: PropTypes.string.isRequired,
+};
