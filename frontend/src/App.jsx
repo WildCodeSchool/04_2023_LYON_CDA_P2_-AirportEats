@@ -19,7 +19,6 @@ export default function App() {
   return (
     <div className="App">
       {isMobile ? null : <NavBar />}
-      <h1>hello world</h1>
       <main>
         <Outlet />
       </main>
