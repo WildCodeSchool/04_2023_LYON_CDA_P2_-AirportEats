@@ -7,7 +7,6 @@ import Divider from "@mui/material/Divider";
 import FastfoodOutlinedIcon from "@mui/icons-material/FastfoodOutlined";
 import DinnerDiningOutlinedIcon from "@mui/icons-material/DinnerDiningOutlined";
 import RiceBowlOutlinedIcon from "@mui/icons-material/RiceBowlOutlined";
-import { useNavigate, useParams } from "react-router-dom";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import allCategories from "../ressources/allCategories";
 
