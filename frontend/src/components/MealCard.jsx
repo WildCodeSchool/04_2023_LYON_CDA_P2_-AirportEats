@@ -20,7 +20,11 @@ export default function MealCard({ imgSrc, mName }) {
             src={imgSrc}
           />
         }
-        title={<Typography variant="subtitle2">{mName}</Typography>}
+        title={
+          <Typography variant="subtitle2">
+            {mName.length > 30 ? `${mName.substring(0, 30)} ...` : mName}
+          </Typography>
+        }
         subheader={
           <Typography
             variant="caption"
