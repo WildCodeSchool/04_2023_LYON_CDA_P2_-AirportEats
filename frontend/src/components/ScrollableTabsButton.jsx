@@ -8,30 +8,35 @@ import FastfoodOutlinedIcon from "@mui/icons-material/FastfoodOutlined";
 import DinnerDiningOutlinedIcon from "@mui/icons-material/DinnerDiningOutlined";
 import RiceBowlOutlinedIcon from "@mui/icons-material/RiceBowlOutlined";
 import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import allCategories from "../ressources/allCategories";
 
 export default function ScrollableTabsButton() {
   const { category } = useParams();
 
-  const [value, setValue] = React.useState(
-    category
-      ? allCategories.filter(
-          (thisCategory) => thisCategory.cName === category
-        )[0].id
-      : false
-  );
   const icons = {
     Italian: DinnerDiningOutlinedIcon,
     American: FastfoodOutlinedIcon,
     Japanese: RiceBowlOutlinedIcon,
   };
+
+  const [value, setValue] = React.useState(category || false);
+
   const navigate = useNavigate();
 
   const handleChange = (event, newValue) => {
-    navigate(`/meals/${allCategories[newValue].cName}`);
+    navigate(`/meals/${newValue}`);
     setValue(newValue);
   };
-  console.info(category);
+
+  const location = useLocation().pathname;
+
+  React.useEffect(() => {
+    if (location === "/meals") {
+      setValue(false);
+    }
+  }, [location]);
+
   return (
     <Box sx={{ bgcolor: "transparent" }}>
       <Tabs
@@ -48,6 +53,7 @@ export default function ScrollableTabsButton() {
             <Tab
               key={thisCategory.id}
               label={thisCategory.cName}
+              value={thisCategory.cName}
               icon={
                 <Icon
                   component={icons[thisCategory.cName]}

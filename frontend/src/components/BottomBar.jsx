@@ -4,11 +4,18 @@ import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function LabelBottomNavigation() {
-  const [value, setValue] = React.useState("home");
+  const location = useLocation().pathname;
+
+  const [value, setValue] = React.useState(
+    location.includes("meals") ? "/meals" : location
+  );
+  const navigate = useNavigate();
 
   const handleChange = (event, newValue) => {
+    navigate(newValue);
     setValue(newValue);
   };
 
@@ -20,17 +27,17 @@ export default function LabelBottomNavigation() {
     >
       <BottomNavigationAction
         label="•"
-        value="home"
+        value="/meals"
         icon={<HomeOutlinedIcon />}
       />
       <BottomNavigationAction
         label="•"
-        value="cart"
+        value="/cart"
         icon={<ShoppingBagOutlinedIcon />}
       />
       <BottomNavigationAction
         label="•"
-        value="favorites"
+        value="/favorites"
         icon={<FavoriteBorderOutlinedIcon />}
       />
     </BottomNavigation>
