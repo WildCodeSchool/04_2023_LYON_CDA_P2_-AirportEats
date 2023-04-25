@@ -1,12 +1,12 @@
 import * as React from "react";
-import Icon from '@mui/material/Icon';
+import Icon from "@mui/material/Icon";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
-import Divider from '@mui/material/Divider';
-import FastfoodOutlinedIcon from '@mui/icons-material/FastfoodOutlined';
-import DinnerDiningOutlinedIcon from '@mui/icons-material/DinnerDiningOutlined';
-import RiceBowlOutlinedIcon from '@mui/icons-material/RiceBowlOutlined';
+import Divider from "@mui/material/Divider";
+import FastfoodOutlinedIcon from "@mui/icons-material/FastfoodOutlined";
+import DinnerDiningOutlinedIcon from "@mui/icons-material/DinnerDiningOutlined";
+import RiceBowlOutlinedIcon from "@mui/icons-material/RiceBowlOutlined";
 import { useNavigate, useParams } from "react-router-dom";
 import allCategories from "../ressources/allCategories";
 
@@ -21,9 +21,9 @@ export default function ScrollableTabsButton() {
       : false
   );
   const icons = {
-    "Italian": DinnerDiningOutlinedIcon,
-    "American": FastfoodOutlinedIcon,
-    "Japanese": RiceBowlOutlinedIcon,
+    Italian: DinnerDiningOutlinedIcon,
+    American: FastfoodOutlinedIcon,
+    Japanese: RiceBowlOutlinedIcon,
   };
   const navigate = useNavigate();
 
@@ -49,28 +49,31 @@ export default function ScrollableTabsButton() {
               key={thisCategory.id}
               label={thisCategory.cName}
               icon={
-              <Icon component={icons[thisCategory.cName]} 
+                <Icon
+                  component={icons[thisCategory.cName]}
+                  sx={{
+                    color: "black",
+                    width: "50px",
+                    margin: "20px",
+                    height: "30px",
+                    transition: "transform 0.2s",
+                  }}
+                />
+              }
               sx={{
-                color: "black", 
-                width: "50px", 
-                margin: "20px",
-                height: "30px", 
-                transition: "transform 0.2s",
-              }}/>
-            }
-            sx={{
-              ":hover": {
-                transform: "scale(1.2)",
-              },
-              ":active": {
-                transform: "scale(1.2)",
-                fontWeight: "bold",
-              },
-            }}/>
+                ":hover": {
+                  transform: "scale(1.2)",
+                },
+                ":active": {
+                  transform: "scale(1.2)",
+                  fontWeight: "bold",
+                },
+              }}
+            />
           );
         })}
       </Tabs>
-      <Divider variant="middle" sx={{margin: "30px"}}/>
+      <Divider variant="middle" sx={{ margin: "30px" }} />
     </Box>
   );
 }
