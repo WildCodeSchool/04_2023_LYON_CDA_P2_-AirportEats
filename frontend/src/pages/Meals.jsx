@@ -57,7 +57,7 @@ export default function Meals() {
         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
           {meals.meals.map((meal) => {
             return (
-              <Grid item xs={3} xs={8}>
+              <Grid item md={3} xs={8}>
                 <MealCard imgSrc={meal.strMealThumb} mName={meal.strMeal} />
               </Grid>
             );
