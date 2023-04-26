@@ -22,6 +22,8 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import Badge from "@mui/material/Badge";
 import { Link } from "react-router-dom";
+import Logo from "../assets/AirportEatsfavicon_nobg.png";
+import Title from "../assets/AirportEatsLogo.png";
 
 const drawerWidth = 240;
 
@@ -116,6 +118,22 @@ export default function PersistentDrawerLeft() {
           >
             <MenuIcon />
           </IconButton>
+          <Box
+            sx={{
+              background: `url(${Logo})`,
+              backgroundSize: "cover",
+              width: 40,
+              height: 40,
+            }}
+          />
+          <Box
+            sx={{
+              background: `url(${Title})`,
+              backgroundSize: "cover",
+              width: 110,
+              height: 30,
+            }}
+          />
           <Typography
             variant="h6"
             noWrap
