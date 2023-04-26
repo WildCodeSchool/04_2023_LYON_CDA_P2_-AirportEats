@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import MealCard from "@components/MealCard";
 
@@ -8,6 +8,21 @@ import { useCart, useCartDispatch } from "./CartContext";
 export default function App() {
   const cart = useCart();
   const dispatch = useCartDispatch();
+  const [favorite, setFavorite] = useState(
+    JSON.parse(localStorage.getItem("product")) || []
+  );
+
+  const toggleFavorite = (id) => {
+    if (favorite.includes(id)) {
+      setFavorite(favorite.filter((product) => product !== id));
+    } else {
+      setFavorite([...favorite, id]);
+    }
+  };
+
+  useEffect(() => {
+    localStorage.setItem("product", JSON.stringify(favorite));
+  }, [favorite]);
 
   const examples = [
     {
@@ -83,6 +98,7 @@ export default function App() {
               key={product.id}
               product={product}
               addToCart={handleAddToCart}
+              toggleFavorite={toggleFavorite}
             />
           );
         })}

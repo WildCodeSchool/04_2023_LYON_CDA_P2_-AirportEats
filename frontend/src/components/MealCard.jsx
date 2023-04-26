@@ -1,7 +1,8 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
-export default function MealCard({ product, addToCart }) {
+export default function MealCard({ product, addToCart, toggleFavorite }) {
   const [quantity, setQuantity] = useState(0);
 
   function plusQuantity() {
@@ -46,6 +47,9 @@ export default function MealCard({ product, addToCart }) {
       >
         Add to cart
       </button>
+      <button type="button" onClick={() => toggleFavorite(product.id)}>
+        <FavoriteIcon />
+      </button>
     </div>
   );
 }
@@ -57,4 +61,5 @@ MealCard.propTypes = {
     price: PropTypes.number,
   }).isRequired,
   addToCart: PropTypes.func.isRequired,
+  toggleFavorite: PropTypes.func.isRequired,
 };
