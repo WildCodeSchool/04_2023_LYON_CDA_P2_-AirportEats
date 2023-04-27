@@ -6,7 +6,7 @@ import CardActions from "@mui/material/CardActions";
 import { Typography } from "@mui/material";
 import FavoriteToggleButton from "./FavoriteToggleButton";
 
-export default function MealCard() {
+export default function MealCardMir() {
   return (
     <Card sx={{ maxWidth: 275, height: 150, display: "flex" }}>
       <CardHeader
