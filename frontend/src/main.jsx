@@ -5,14 +5,20 @@ import { ThemeProvider } from "@mui/material";
 import { mainTheme } from "./theme";
 import Routes from "./index";
 
-// import App from "./App";
+import App from "./App";
+import { CartProvider } from "./context/CartContext";
+import FavoritesProvider from "./context/FavoritesContext";
 
 const router = createBrowserRouter(Routes);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <ThemeProvider theme={mainTheme}>
-      <RouterProvider router={router} />
-    </ThemeProvider>
+    <CartProvider>
+      <FavoritesProvider>
+        <ThemeProvider theme={mainTheme}>
+          <RouterProvider router={router} />
+        </ThemeProvider>
+      </FavoritesProvider>
+    </CartProvider>
   </React.StrictMode>
 );
