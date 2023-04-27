@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
@@ -97,7 +97,7 @@ export default function MealCard({ imgSrc, mName }) {
           subheader={
             <Typography
               variant="caption"
-              sx={{ color: "#e1b1b1", fontWeight: "bold" }}
+              sx={{ color: "#E1B1B1", fontWeight: "bold" }}
             >
               From the Fork
             </Typography>
@@ -109,6 +109,7 @@ export default function MealCard({ imgSrc, mName }) {
           </IconButton>
         </CardActions>
       </Card>
+
       <Modal
         open={open}
         handleClose={handleClose}
