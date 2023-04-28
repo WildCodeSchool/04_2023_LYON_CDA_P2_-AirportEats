@@ -5,7 +5,6 @@ import { ThemeProvider } from "@mui/material";
 import { mainTheme } from "./theme";
 import Routes from "./index";
 
-import App from "./App";
 import { CartProvider } from "./context/CartContext";
 import FavoritesProvider from "./context/FavoritesContext";
 

@@ -6,7 +6,8 @@ import MealCard from "@components/MealCard";
 
 export default function Meals() {
   const { category } = useParams();
-  const meals = useLoaderData();
+  // Déstructuration ???
+  const { meals } = useLoaderData();
   console.info(meals);
 
   // const mealsDetails = [
@@ -55,10 +56,10 @@ export default function Meals() {
       <h1>{category}</h1>
       <Box sx={{ width: "100%", p: 5 }}>
         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-          {meals.meals.map((meal) => {
+          {meals.map((meal) => {
             return (
-              <Grid item md={3} xs={8}>
-                <MealCard imgSrc={meal.strMealThumb} mName={meal.strMeal} />
+              <Grid key={meal.idMeal} item md={3} xs={8}>
+                <MealCard meal={meal} />
               </Grid>
             );
           })}

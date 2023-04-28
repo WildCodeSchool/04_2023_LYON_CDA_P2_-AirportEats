@@ -1,7 +1,6 @@
 import ScrollableTabsButton from "@components/ScrollableTabsButton";
 import { Outlet, useParams } from "react-router-dom";
-// import SwipeableModal from "@components/SwipeableModal";
-// import Modal from "@components/Modal"
+// Rename fichier
 
 export default function Home() {
   const { category } = useParams();

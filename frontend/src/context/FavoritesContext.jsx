@@ -1,15 +1,10 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useContext, useMemo } from "react";
 import PropTypes from "prop-types";
 
 const FavoritesContext = createContext(null);
-const SetFavoritesContext = createContext(null);
 
 export function useFavorites() {
   return useContext(FavoritesContext);
-}
-
-export function useSetFavorites() {
-  return useContext(SetFavoritesContext);
 }
 
 export default function FavoritesProvider({ children }) {
@@ -19,13 +14,18 @@ export default function FavoritesProvider({ children }) {
 
   localStorage.setItem("product", JSON.stringify(favorites));
 
-  // const contextValue = { favorites, setFavorites };
+  // Togglefavorites ????
+  const contextValue = useMemo(
+    () => ({
+      favorites,
+      setFavorites,
+    }),
+    [favorites]
+  );
 
   return (
-    <FavoritesContext.Provider value={favorites}>
-      <SetFavoritesContext.Provider value={setFavorites}>
-        {children}
-      </SetFavoritesContext.Provider>
+    <FavoritesContext.Provider value={contextValue}>
+      {children}
     </FavoritesContext.Provider>
   );
 }

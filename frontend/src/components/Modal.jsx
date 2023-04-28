@@ -5,9 +5,12 @@ import Fade from "@mui/material/Fade";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
+// import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import Typography from "@mui/material/Typography";
 import PropTypes from "prop-types";
+import { useCart, useCartDispatch } from "../context/CartContext";
+import { useFavorites } from "../context/FavoritesContext";
 
 const style = {
   position: "absolute",
@@ -48,8 +51,73 @@ const tagStyle = {
   marginRight: "1rem",
 };
 
-export default function MealModal({ open, handleClose, mName, imgSrc }) {
+export default function MealModal({ open, handleClose, meal }) {
   const [quantity, setQuantity] = React.useState(0);
+  const { favorites, setFavorites } = useFavorites();
+
+  // Passer dans context ???
+  const toggleFavorite = (newIdMeal) => {
+    if (favorites.includes(newIdMeal)) {
+      setFavorites(favorites.filter((idMeal) => idMeal !== newIdMeal));
+    } else {
+      setFavorites([...favorites, newIdMeal]);
+    }
+  };
+
+  const price = 10;
+
+  const cart = useCart();
+  const dispatch = useCartDispatch();
+
+  // Mettre dans modal
+  function handleDelete(idMeal) {
+    // const validation = confirm("Voulez-vous supprimer cet élément du panier ?");
+    const validation = true;
+    if (validation) {
+      // reducer action deleted
+      return dispatch({
+        type: "deleted",
+        idMeal,
+      });
+    }
+    return false;
+  }
+
+  // Mettre dans modal
+  function handleModifyQuantity(idMeal, newQuantity) {
+    if (newQuantity <= 0) {
+      return handleDelete(idMeal);
+    }
+
+    // reducer action changed
+    return dispatch({
+      type: "changed",
+      idMeal,
+      newQuantity,
+    });
+  }
+
+  // Mettre dans modal
+  const handleAddToCart = (newMeal, newPrice, newQuantity) => {
+    const testMeal = cart.find((e) => e.idMeal === newMeal.idMeal);
+    if (testMeal) {
+      return handleModifyQuantity(
+        testMeal.idMeal,
+        testMeal.quantity + quantity
+      );
+    }
+
+    // reducer action added
+    return dispatch({
+      type: "added",
+      meal: {
+        ...newMeal,
+        price: newPrice,
+        quantity: newQuantity,
+        totalPrice: price * quantity,
+      },
+    });
+  };
 
   const handleIncreaseQuantity = () => {
     setQuantity(quantity + 1);
@@ -60,8 +128,6 @@ export default function MealModal({ open, handleClose, mName, imgSrc }) {
       setQuantity(quantity - 1);
     }
   };
-
-  const handleAddToCart = () => {};
 
   return (
     <div>
@@ -87,12 +153,20 @@ export default function MealModal({ open, handleClose, mName, imgSrc }) {
             </IconButton>
 
             <div style={{ display: "flex", justifyContent: "center" }}>
-              <img src={imgSrc} alt={mName} style={imgStyle} />
+              <img
+                src={meal.strMealThumb}
+                alt={meal.strMeal}
+                style={imgStyle}
+              />
             </div>
 
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <span style={tagStyle}>2 mins away</span>
-              <IconButton aria-label="add to favorites" sx={{ p: 0 }}>
+              <IconButton
+                aria-label="add to favorites"
+                sx={{ p: 0 }}
+                onClick={() => toggleFavorite(meal.idMeal)}
+              >
                 <FavoriteBorderOutlinedIcon />
               </IconButton>
             </div>
@@ -103,13 +177,13 @@ export default function MealModal({ open, handleClose, mName, imgSrc }) {
                 variant="h6"
                 component="h2"
               >
-                {mName}
+                {meal.strMeal}
               </Typography>
             </div>
 
             <Box display="flex" alignItems="center" mt={2}>
               <Typography variant="h6" sx={{ mr: 2 }}>
-                20.28$
+                {price} €
               </Typography>
               <Button
                 variant="contained"
@@ -139,8 +213,13 @@ export default function MealModal({ open, handleClose, mName, imgSrc }) {
             >
               <Button
                 variant="contained"
-                onClick={handleAddToCart}
+                onClick={() => {
+                  handleClose();
+                  setQuantity(0);
+                  handleAddToCart(meal, price, quantity);
+                }}
                 sx={{ borderRadius: "16px" }}
+                disabled={!quantity}
               >
                 Ajouter au panier
               </Button>
@@ -153,8 +232,11 @@ export default function MealModal({ open, handleClose, mName, imgSrc }) {
 }
 
 MealModal.propTypes = {
-  mName: PropTypes.string.isRequired,
-  imgSrc: PropTypes.string.isRequired,
+  meal: PropTypes.shape({
+    idMeal: PropTypes.number.isRequired,
+    strMeal: PropTypes.string.isRequired,
+    strMealThumb: PropTypes.string.isRequired,
+  }).isRequired,
   open: PropTypes.bool.isRequired,
   handleClose: PropTypes.func.isRequired,
 };

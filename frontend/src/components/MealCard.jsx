@@ -1,59 +1,4 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-
-export function MealCardC({ product, addToCart, toggleFavorite }) {
-  const [quantity, setQuantity] = useState(0);
-
-  function plusQuantity() {
-    return setQuantity(quantity + 1);
-  }
-
-  function minusQuantity() {
-    if (quantity > 0) {
-      return setQuantity(quantity - 1);
-    }
-    return false;
-  }
-
-  return (
-    <div>
-      <p>{product.pName}</p>
-      <p>{product.price} €</p>
-      <p>{quantity}</p>
-      <button
-        type="button"
-        onClick={() => {
-          minusQuantity();
-        }}
-      >
-        -
-      </button>
-      <button
-        type="button"
-        onClick={() => {
-          plusQuantity();
-        }}
-      >
-        +
-      </button>
-      <button
-        type="button"
-        onClick={() => {
-          setQuantity(0);
-          addToCart(product, quantity);
-        }}
-        disabled={!quantity}
-      >
-        Add to cart
-      </button>
-      <button type="button" onClick={() => toggleFavorite(product.id)}>
-        <FavoriteIcon />
-      </button>
-    </div>
-  );
-}
-
+import React from "react";
 import Modal from "@components/Modal";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
@@ -62,9 +7,10 @@ import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 // import FavoriteIcon from "@mui/icons-material/Favorite";
+import PropTypes from "prop-types";
 import { Typography } from "@mui/material";
 
-export default function MealCard({ imgSrc, mName }) {
+export default function MealCard({ meal }) {
   const [open, setOpen] = React.useState(false);
 
   const handleOpen = () => {
@@ -86,12 +32,14 @@ export default function MealCard({ imgSrc, mName }) {
             <Avatar
               sx={{ width: 95, height: 95 }}
               aria-label="recipe"
-              src={imgSrc}
+              src={meal.strMealThumb}
             />
           }
           title={
             <Typography variant="subtitle2">
-              {mName.length > 30 ? `${mName.substring(0, 30)} ...` : mName}
+              {meal.strMeal.length > 30
+                ? `${meal.strMeal.substring(0, 30)} ...`
+                : meal.strMeal}
             </Typography>
           }
           subheader={
@@ -110,27 +58,15 @@ export default function MealCard({ imgSrc, mName }) {
         </CardActions>
       </Card>
 
-      <Modal
-        open={open}
-        handleClose={handleClose}
-        mName={mName}
-        imgSrc={imgSrc}
-      />
+      <Modal open={open} handleClose={handleClose} meal={meal} />
     </div>
   );
 }
 
-MealCardC.propTypes = {
-  product: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    pName: PropTypes.string.isRequired,
-    price: PropTypes.number,
-  }).isRequired,
-  addToCart: PropTypes.func.isRequired,
-  toggleFavorite: PropTypes.func.isRequired,
-};
-
 MealCard.propTypes = {
-  mName: PropTypes.string.isRequired,
-  imgSrc: PropTypes.string.isRequired,
+  meal: PropTypes.shape({
+    idMeal: PropTypes.number.isRequired,
+    strMeal: PropTypes.string.isRequired,
+    strMealThumb: PropTypes.string.isRequired,
+  }).isRequired,
 };

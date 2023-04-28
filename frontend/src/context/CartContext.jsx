@@ -8,22 +8,22 @@ export function CartProvider({ children }) {
   function cartReducer(cart, action) {
     switch (action.type) {
       case "added": {
-        return [...cart, action.product];
+        return [...cart, action.meal];
       }
       case "changed": {
-        return cart.map((product) => {
-          if (product.id === action.id) {
+        return cart.map((meal) => {
+          if (meal.idMeal === action.idMeal) {
             return {
-              ...product,
+              ...meal,
               quantity: action.newQuantity,
-              totalPrice: product.price * action.newQuantity,
+              totalPrice: meal.price * action.newQuantity,
             };
           }
-          return product;
+          return meal;
         });
       }
       case "deleted": {
-        return cart.filter((product) => product.id !== action.id);
+        return cart.filter((meal) => meal.idMeal !== action.idMeal);
       }
       default: {
         throw Error(`Unknown action: ${action.type}`);
@@ -32,6 +32,8 @@ export function CartProvider({ children }) {
   }
 
   const [cart, dispatch] = useReducer(cartReducer, []);
+
+  // console.log(cart);
 
   return (
     <CartContext.Provider value={cart}>
