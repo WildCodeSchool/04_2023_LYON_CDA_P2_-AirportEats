@@ -73,7 +73,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 export default function PersistentDrawerLeft() {
-  const cart = useCart();
+  const { cart } = useCart();
 
   // Pour rajouter l'icon il faut aller dans le drawer
   const drawerItems = [
@@ -141,7 +141,7 @@ export default function PersistentDrawerLeft() {
                   acc + parseInt(currentProduct.quantity, 10),
                 0
               )}
-              color="error"
+              color="primary"
             >
               <ShoppingBagOutlinedIcon />
             </Badge>

@@ -9,7 +9,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import Typography from "@mui/material/Typography";
 import PropTypes from "prop-types";
-import { useCart, useCartDispatch } from "../context/CartContext";
+import { useCart } from "../context/CartContext";
 import { useFavorites } from "../context/FavoritesContext";
 
 const style = {
@@ -53,71 +53,12 @@ const tagStyle = {
 
 export default function MealModal({ open, handleClose, meal }) {
   const [quantity, setQuantity] = React.useState(0);
-  const { favorites, setFavorites } = useFavorites();
+  const { toggleFavorite } = useFavorites();
 
-  // Passer dans context ???
-  const toggleFavorite = (newIdMeal) => {
-    if (favorites.includes(newIdMeal)) {
-      setFavorites(favorites.filter((idMeal) => idMeal !== newIdMeal));
-    } else {
-      setFavorites([...favorites, newIdMeal]);
-    }
-  };
-
+  // Function pour random price
   const price = 10;
 
-  const cart = useCart();
-  const dispatch = useCartDispatch();
-
-  // Mettre dans modal
-  function handleDelete(idMeal) {
-    // const validation = confirm("Voulez-vous supprimer cet élément du panier ?");
-    const validation = true;
-    if (validation) {
-      // reducer action deleted
-      return dispatch({
-        type: "deleted",
-        idMeal,
-      });
-    }
-    return false;
-  }
-
-  // Mettre dans modal
-  function handleModifyQuantity(idMeal, newQuantity) {
-    if (newQuantity <= 0) {
-      return handleDelete(idMeal);
-    }
-
-    // reducer action changed
-    return dispatch({
-      type: "changed",
-      idMeal,
-      newQuantity,
-    });
-  }
-
-  // Mettre dans modal
-  const handleAddToCart = (newMeal, newPrice, newQuantity) => {
-    const testMeal = cart.find((e) => e.idMeal === newMeal.idMeal);
-    if (testMeal) {
-      return handleModifyQuantity(
-        testMeal.idMeal,
-        testMeal.quantity + quantity
-      );
-    }
-
-    // reducer action added
-    return dispatch({
-      type: "added",
-      meal: {
-        ...newMeal,
-        price: newPrice,
-        quantity: newQuantity,
-        totalPrice: price * quantity,
-      },
-    });
-  };
+  const { handleAddToCart } = useCart();
 
   const handleIncreaseQuantity = () => {
     setQuantity(quantity + 1);
@@ -233,7 +174,7 @@ export default function MealModal({ open, handleClose, meal }) {
 
 MealModal.propTypes = {
   meal: PropTypes.shape({
-    idMeal: PropTypes.number.isRequired,
+    idMeal: PropTypes.string.isRequired,
     strMeal: PropTypes.string.isRequired,
     strMealThumb: PropTypes.string.isRequired,
   }).isRequired,

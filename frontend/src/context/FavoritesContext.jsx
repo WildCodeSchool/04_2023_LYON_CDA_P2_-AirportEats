@@ -9,16 +9,23 @@ export function useFavorites() {
 
 export default function FavoritesProvider({ children }) {
   const [favorites, setFavorites] = useState(
-    JSON.parse(localStorage.getItem("product")) || []
+    JSON.parse(localStorage.getItem("favs")) || []
   );
 
-  localStorage.setItem("product", JSON.stringify(favorites));
+  const toggleFavorite = (newIdMeal) => {
+    if (favorites.includes(newIdMeal)) {
+      setFavorites(favorites.filter((idMeal) => idMeal !== newIdMeal));
+    } else {
+      setFavorites([...favorites, newIdMeal]);
+    }
+  };
 
-  // Togglefavorites ????
+  localStorage.setItem("favs", JSON.stringify(favorites));
+
   const contextValue = useMemo(
     () => ({
       favorites,
-      setFavorites,
+      toggleFavorite,
     }),
     [favorites]
   );

@@ -1,5 +1,5 @@
 import Favorites from "@pages/Favorites";
-// import { redirect } from "react-router-dom";
+import { redirect } from "react-router-dom";
 import Meals from "./pages/Meals";
 import Cart from "./pages/Cart";
 import Payment from "./pages/Payment";
@@ -15,7 +15,7 @@ const loadApi = async (category) => {
   )
     .then((response) => response.json())
     .then((data) => data)
-    .catch((err) => console.error(err));
+    .catch(() => redirect("/meals"));
   return meals;
   // } else return redirect("/meals");
 };

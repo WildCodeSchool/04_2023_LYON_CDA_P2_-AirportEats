@@ -65,7 +65,7 @@ export default function MealCard({ meal }) {
 
 MealCard.propTypes = {
   meal: PropTypes.shape({
-    idMeal: PropTypes.number.isRequired,
+    idMeal: PropTypes.string.isRequired,
     strMeal: PropTypes.string.isRequired,
     strMealThumb: PropTypes.string.isRequired,
   }).isRequired,

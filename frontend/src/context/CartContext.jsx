@@ -1,55 +1,83 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useMemo, useState } from "react";
 import PropTypes from "prop-types";
 
 export const CartContext = createContext(null);
-export const CartDispatchContext = createContext(null);
 
 export function CartProvider({ children }) {
-  function cartReducer(cart, action) {
-    switch (action.type) {
-      case "added": {
-        return [...cart, action.meal];
-      }
-      case "changed": {
-        return cart.map((meal) => {
-          if (meal.idMeal === action.idMeal) {
-            return {
-              ...meal,
-              quantity: action.newQuantity,
-              totalPrice: meal.price * action.newQuantity,
-            };
-          }
-          return meal;
-        });
-      }
-      case "deleted": {
-        return cart.filter((meal) => meal.idMeal !== action.idMeal);
-      }
-      default: {
-        throw Error(`Unknown action: ${action.type}`);
-      }
+  const [cart, setCart] = useState(
+    JSON.parse(localStorage.getItem("cart")) || []
+  );
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  function handleDelete(idMeal) {
+    // const validation = confirm("Voulez-vous supprimer cet élément du panier ?");
+    const validation = true;
+    if (validation) {
+      return setCart(cart.filter((meal) => meal.idMeal !== idMeal));
     }
+    return false;
   }
 
-  const [cart, dispatch] = useReducer(cartReducer, []);
+  function handleModifyQuantity(idMeal, newQuantity) {
+    if (newQuantity <= 0) {
+      return handleDelete(idMeal);
+    }
+    return setCart(
+      cart.map((meal) => {
+        if (meal.idMeal === idMeal) {
+          return {
+            ...meal,
+            quantity: newQuantity,
+            totalPrice: meal.price * newQuantity,
+          };
+        }
+        return meal;
+      })
+    );
+  }
 
-  // console.log(cart);
+  function handleAddToCart(newMeal, newPrice, newQuantity) {
+    const findMeal = cart.find((e) => e.idMeal === newMeal.idMeal);
+    if (findMeal) {
+      return handleModifyQuantity(
+        findMeal.idMeal,
+        findMeal.quantity + newQuantity
+      );
+    }
+    return setCart([
+      ...cart,
+      {
+        ...newMeal,
+        price: newPrice,
+        quantity: newQuantity,
+        totalPrice: newPrice * newQuantity,
+      },
+    ]);
+  }
+
+  function handleEmptyCart() {
+    setCart([]);
+  }
+
+  const contextValue = useMemo(
+    () => ({
+      cart,
+      handleAddToCart,
+      handleModifyQuantity,
+      handleDelete,
+      handleEmptyCart,
+    }),
+    [cart]
+  );
 
   return (
-    <CartContext.Provider value={cart}>
-      <CartDispatchContext.Provider value={dispatch}>
-        {children}
-      </CartDispatchContext.Provider>
-    </CartContext.Provider>
+    <CartContext.Provider value={contextValue}>{children}</CartContext.Provider>
   );
 }
 
 export function useCart() {
   return useContext(CartContext);
-}
-
-export function useCartDispatch() {
-  return useContext(CartDispatchContext);
 }
 
 CartProvider.propTypes = {
