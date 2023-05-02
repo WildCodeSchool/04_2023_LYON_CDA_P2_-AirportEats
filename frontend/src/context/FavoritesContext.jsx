@@ -12,11 +12,16 @@ export default function FavoritesProvider({ children }) {
     JSON.parse(localStorage.getItem("favs")) || []
   );
 
-  const toggleFavorite = (newIdMeal) => {
-    if (favorites.includes(newIdMeal)) {
-      setFavorites(favorites.filter((idMeal) => idMeal !== newIdMeal));
+  const toggleFavorite = (newFav) => {
+    const findMeal = favorites.find(
+      (favMeal) => favMeal.idMeal === newFav.idMeal
+    );
+    if (findMeal) {
+      setFavorites(
+        favorites.filter((favMeal) => favMeal.idMeal !== newFav.idMeal)
+      );
     } else {
-      setFavorites([...favorites, newIdMeal]);
+      setFavorites([...favorites, newFav]);
     }
   };
 

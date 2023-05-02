@@ -106,7 +106,7 @@ export default function MealModal({ open, handleClose, meal }) {
               <IconButton
                 aria-label="add to favorites"
                 sx={{ p: 0 }}
-                onClick={() => toggleFavorite(meal.idMeal)}
+                onClick={() => toggleFavorite(meal)}
               >
                 <FavoriteBorderOutlinedIcon />
               </IconButton>
