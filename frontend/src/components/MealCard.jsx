@@ -12,7 +12,7 @@ import FavoriteToggleButton from "./FavoriteToggleButton";
 export default function MealCard({ meal }) {
   const [open, setOpen] = React.useState(false);
   const isMobile = useMediaQuery("(max-width: 428px)");
-  const limit = isMobile ? 10 : 30;
+  const limit = isMobile ? 15 : 30;
 
   const handleOpen = () => {
     setOpen(true);
@@ -23,7 +23,15 @@ export default function MealCard({ meal }) {
 
   return (
     <div>
-      <Card sx={{ maxWidth: 300, height: 150, display: "flex" }}>
+      <Card
+        sx={{
+          maxWidth: 300,
+          height: 150,
+          display: "flex",
+          ":hover": { backgroundColor: "#e2e2e2" },
+          ":active": { backgroundColor: "lightgray" },
+        }}
+      >
         <CardHeader
           sx={{ display: "flex", pr: 2 }}
           avatar={
