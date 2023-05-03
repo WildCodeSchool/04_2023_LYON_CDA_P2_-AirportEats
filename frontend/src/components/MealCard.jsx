@@ -4,14 +4,15 @@ import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardActions from "@mui/material/CardActions";
 import Avatar from "@mui/material/Avatar";
-import IconButton from "@mui/material/IconButton";
-import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 // import FavoriteIcon from "@mui/icons-material/Favorite";
 import PropTypes from "prop-types";
-import { Typography } from "@mui/material";
+import { Typography, useMediaQuery } from "@mui/material";
+import FavoriteToggleButton from "./FavoriteToggleButton";
 
 export default function MealCard({ meal }) {
   const [open, setOpen] = React.useState(false);
+  const isMobile = useMediaQuery("(max-width: 428px)");
+  const limit = isMobile ? 10 : 30;
 
   const handleOpen = () => {
     setOpen(true);
@@ -22,23 +23,28 @@ export default function MealCard({ meal }) {
 
   return (
     <div>
-      <Card
-        sx={{ maxWidth: 300, height: 150, display: "flex" }}
-        onClick={handleOpen}
-      >
+      <Card sx={{ maxWidth: 300, height: 150, display: "flex" }}>
         <CardHeader
           sx={{ display: "flex", pr: 2 }}
           avatar={
-            <Avatar
-              sx={{ width: 95, height: 95 }}
-              aria-label="recipe"
-              src={meal.strMealThumb}
-            />
+            isMobile ? (
+              <Avatar
+                sx={{ width: 65, height: 65 }}
+                src={meal.strMealThumb}
+                aria-label="recipe"
+              />
+            ) : (
+              <Avatar
+                sx={{ width: 95, height: 95 }}
+                aria-label="recipe"
+                src={meal.strMealThumb}
+              />
+            )
           }
           title={
             <Typography variant="subtitle2">
-              {meal.strMeal.length > 30
-                ? `${meal.strMeal.substring(0, 30)} ...`
+              {meal.strMeal.length > limit
+                ? `${meal.strMeal.substring(0, limit)} ...`
                 : meal.strMeal}
             </Typography>
           }
@@ -50,11 +56,10 @@ export default function MealCard({ meal }) {
               From the Fork
             </Typography>
           }
+          onClick={handleOpen}
         />
         <CardActions sx={{ display: "flex", justifyContent: "flex-end", p: 2 }}>
-          <IconButton aria-label="add to favorites" sx={{ p: 0 }}>
-            <FavoriteBorderOutlinedIcon />
-          </IconButton>
+          <FavoriteToggleButton />
         </CardActions>
       </Card>
 
