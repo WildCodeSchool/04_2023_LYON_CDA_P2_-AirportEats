@@ -1,5 +1,6 @@
 import { createContext, useContext, useMemo, useState } from "react";
 import PropTypes from "prop-types";
+import { enqueueSnackbar } from "notistack";
 
 export const CartContext = createContext(null);
 
@@ -14,7 +15,8 @@ export function CartProvider({ children }) {
     // const validation = confirm("Voulez-vous supprimer cet élément du panier ?");
     const validation = true;
     if (validation) {
-      return setCart(cart.filter((meal) => meal.idMeal !== idMeal));
+      setCart(cart.filter((meal) => meal.idMeal !== idMeal));
+      return enqueueSnackbar("article supprimé", { variant: "success" });
     }
     return false;
   }
@@ -45,7 +47,7 @@ export function CartProvider({ children }) {
         findMeal.quantity + newQuantity
       );
     }
-    return setCart([
+    setCart([
       ...cart,
       {
         ...newMeal,
@@ -54,6 +56,7 @@ export function CartProvider({ children }) {
         totalPrice: newPrice * newQuantity,
       },
     ]);
+    return enqueueSnackbar("Article ajouté", { variant: "success" });
   }
 
   function handleEmptyCart() {
