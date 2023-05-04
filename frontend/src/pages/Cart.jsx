@@ -9,18 +9,7 @@ export default function Cart() {
 
   return (
     <>
-      <Typography variant="h5">
-        Total :{" "}
-        {cart
-          .reduce(
-            (acc, currentProduct) =>
-              acc + parseFloat(currentProduct.totalPrice),
-            0
-          )
-          .toString()
-          .replace(".", ",")}
-        €
-      </Typography>
+      <h1>My cart</h1>
       {/* <div>
         {cart.map((meal) => {
           return (
@@ -60,6 +49,18 @@ export default function Cart() {
           return <CartCard key={meal.idMeal} meal={meal} />;
         })}
       </Box>
+      <Typography variant="h5">
+        Total :{" "}
+        {cart
+          .reduce(
+            (acc, currentProduct) =>
+              acc + parseFloat(currentProduct.totalPrice),
+            0
+          )
+          .toString()
+          .replace(".", ",")}
+        €
+      </Typography>
       <Button
         disabled={!(cart.length > 0)}
         component={Link}

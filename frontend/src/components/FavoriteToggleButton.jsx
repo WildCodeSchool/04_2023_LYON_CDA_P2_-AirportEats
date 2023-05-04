@@ -8,6 +8,7 @@ export default function FavoriteToggleButton() {
 
   return (
     <ToggleButton
+      sx={{ border: "none" }}
       value="littleheart"
       selected={selected}
       onChange={() => {

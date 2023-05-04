@@ -1,7 +1,6 @@
 import React from "react";
-import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
-import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
+import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 // import FavoriteIcon from "@mui/icons-material/Favorite";
 import PropTypes from "prop-types";
 import {
@@ -21,13 +20,13 @@ export default function CartCard({ meal }) {
   const { handleModifyQuantity } = useCart();
 
   return (
-    <Card sx={{ maxWidth: 250, display: "flex", m: 1 }}>
+    <Card sx={{ maxWidth: 300, display: "flex", m: 1, borderRadius: 5 }}>
       <Stack direction="column">
         <CardHeader
           sx={{ display: "flex", pr: 2, padding: "4px" }}
           avatar={
             <Avatar
-              sx={{ width: 65, height: 65 }}
+              sx={{ width: 65, height: 65, m: 2 }}
               aria-label="recipe"
               src={meal.strMealThumb}
             />
@@ -41,9 +40,7 @@ export default function CartCard({ meal }) {
           }
         />
         <CardContent sx={{ padding: "4px" }}>
-          <Typography variant="body1">Quantity : {meal.quantity}</Typography>
           <Typography variant="body1">Unitary Price : {meal.price}€</Typography>
-          <Typography variant="h6">Total : {meal.totalPrice}€</Typography>
         </CardContent>
       </Stack>
       <CardActions
@@ -55,31 +52,33 @@ export default function CartCard({ meal }) {
           width: "40%",
         }}
       >
-        <IconButton aria-label="add to favorites" sx={{ p: 0 }}>
-          <FavoriteBorderOutlinedIcon />
-        </IconButton>
         <Box sx={{ height: "100%" }}>
           <Stack
             sx={{ height: "100%" }}
             direction="column"
             justifyContent="space-around"
           >
-            <IconButton
-              aria-label="quantity up"
-              onClick={() =>
-                handleModifyQuantity(meal.idMeal, meal.quantity + 1)
-              }
-            >
-              <ArrowUpwardIcon fontSize="large" />
-            </IconButton>
-            <IconButton
-              aria-label="quantity down"
-              onClick={() =>
-                handleModifyQuantity(meal.idMeal, meal.quantity - 1)
-              }
-            >
-              <ArrowDownwardIcon fontSize="large" />
-            </IconButton>
+            <Box sx={{ display: "flex" }}>
+              <IconButton
+                aria-label="quantity down"
+                onClick={() =>
+                  handleModifyQuantity(meal.idMeal, meal.quantity - 1)
+                }
+              >
+                <RemoveCircleIcon />
+              </IconButton>
+              <Typography variant="body1" sx={{ mt: 1 }}>
+                {meal.quantity}
+              </Typography>
+              <IconButton
+                aria-label="quantity up"
+                onClick={() =>
+                  handleModifyQuantity(meal.idMeal, meal.quantity + 1)
+                }
+              >
+                <AddCircleIcon />
+              </IconButton>
+            </Box>
           </Stack>
         </Box>
       </CardActions>
