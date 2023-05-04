@@ -1,33 +1,16 @@
+import { Box, Button, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
+import CartCard from "@components/CartCard";
 import { useCart } from "../context/CartContext";
 
 export default function Cart() {
-  const { cart, handleModifyQuantity, handleDelete } = useCart();
+  // const { cart, handleModifyQuantity, handleDelete } = useCart();
+  const { cart } = useCart();
 
   return (
     <>
-      <div>
-        <p>
-          Nb Products:{" "}
-          {cart.reduce(
-            (acc, currentProduct) =>
-              acc + parseInt(currentProduct.quantity, 10),
-            0
-          )}
-        </p>
-        <p>
-          Price :
-          {cart
-            .reduce(
-              (acc, currentProduct) =>
-                acc + parseFloat(currentProduct.totalPrice),
-              0
-            )
-            .toString()
-            .replace(".", ",")}
-          €
-        </p>
-      </div>
-      <div>
+      <h1>My cart</h1>
+      {/* <div>
         {cart.map((meal) => {
           return (
             <div key={meal.idMeal}>
@@ -58,7 +41,39 @@ export default function Cart() {
             </div>
           );
         })}
-      </div>
+      </div> */}
+      <Box
+        sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+      >
+        {cart.map((meal) => {
+          return <CartCard key={meal.idMeal} meal={meal} />;
+        })}
+      </Box>
+      <Typography variant="h5">
+        Total :{" "}
+        {cart
+          .reduce(
+            (acc, currentProduct) =>
+              acc + parseFloat(currentProduct.totalPrice),
+            0
+          )
+          .toString()
+          .replace(".", ",")}
+        €
+      </Typography>
+      <Button
+        disabled={!(cart.length > 0)}
+        component={Link}
+        to="/payment"
+        variant="contained"
+        sx={{
+          m: 5,
+          borderRadius: 3,
+          backgroundColor: "#e1b1b1",
+        }}
+      >
+        Confirm
+      </Button>
     </>
   );
 }

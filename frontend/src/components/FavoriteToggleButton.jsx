@@ -7,7 +7,8 @@ export default function FavoriteToggleButton() {
   const [selected, setSelected] = React.useState(false);
 
   return (
-    <IconButton
+    <ToggleButton
+      sx={{ border: "none" }}
       value="littleheart"
       onClick={() => {
         setSelected(!selected);

@@ -126,23 +126,25 @@ export default function MealModal({ open, handleClose, meal }) {
               <Typography variant="h6" sx={{ mr: 2 }}>
                 {price} €
               </Typography>
-              <Button
-                variant="contained"
-                onClick={handleDecreaseQuantity}
-                sx={btnStyle}
-              >
-                -
-              </Button>
-              <Typography variant="h6" sx={{ mx: 2 }}>
-                {quantity}
-              </Typography>
-              <Button
-                variant="contained"
-                onClick={handleIncreaseQuantity}
-                sx={btnStyle}
-              >
-                +
-              </Button>
+              <Box sx={{ display: "flex", ml: 4 }}>
+                <Button
+                  variant="contained"
+                  onClick={handleDecreaseQuantity}
+                  sx={btnStyle}
+                >
+                  -
+                </Button>
+                <Typography variant="h6" sx={{ mx: 2 }}>
+                  {quantity}
+                </Typography>
+                <Button
+                  variant="contained"
+                  onClick={handleIncreaseQuantity}
+                  sx={btnStyle}
+                >
+                  +
+                </Button>
+              </Box>
             </Box>
 
             <div
