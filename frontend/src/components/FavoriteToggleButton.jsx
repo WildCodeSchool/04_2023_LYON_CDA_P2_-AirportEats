@@ -1,7 +1,7 @@
 import React from "react";
-import ToggleButton from "@mui/material/ToggleButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { IconButton } from "@mui/material";
 
 export default function FavoriteToggleButton() {
   const [selected, setSelected] = React.useState(false);
@@ -10,8 +10,7 @@ export default function FavoriteToggleButton() {
     <ToggleButton
       sx={{ border: "none" }}
       value="littleheart"
-      selected={selected}
-      onChange={() => {
+      onClick={() => {
         setSelected(!selected);
       }}
     >
@@ -20,6 +19,6 @@ export default function FavoriteToggleButton() {
       ) : (
         <FavoriteBorderIcon htmlColor="#E7B09F" />
       )}
-    </ToggleButton>
+    </IconButton>
   );
 }
