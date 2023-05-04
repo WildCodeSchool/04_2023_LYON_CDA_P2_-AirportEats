@@ -30,6 +30,7 @@ export default function MealCard({ meal }) {
           display: "flex",
           ":hover": { backgroundColor: "#e2e2e2" },
           ":active": { backgroundColor: "lightgray" },
+          ml: 2,
         }}
       >
         <CardHeader
