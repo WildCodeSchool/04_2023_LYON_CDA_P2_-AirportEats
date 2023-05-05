@@ -1,6 +1,7 @@
 import React from "react";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { ToggleButton } from "@mui/material";
 
 export default function FavoriteToggleButton() {
   const [selected, setSelected] = React.useState(false);
