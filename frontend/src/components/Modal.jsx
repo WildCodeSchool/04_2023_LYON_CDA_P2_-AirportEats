@@ -56,7 +56,16 @@ export default function MealModal({ open, handleClose, meal }) {
   const { toggleFavorite } = useFavorites();
 
   // Function pour random price
-  const price = 10;
+  function randomPrice(id) {
+    if (id % 3 === 0) {
+      return 10;
+    }
+    if (id % 2 === 0) {
+      return 6;
+    }
+    return 8;
+  }
+  const price = randomPrice(Number(meal.idMeal));
 
   const { handleAddToCart } = useCart();
 
