@@ -4,11 +4,9 @@ import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardActions from "@mui/material/CardActions";
 import Avatar from "@mui/material/Avatar";
-import IconButton from "@mui/material/IconButton";
-import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-// import FavoriteIcon from "@mui/icons-material/Favorite";
 import PropTypes from "prop-types";
 import { Typography } from "@mui/material";
+import FavoriteToggleButton from "./FavoriteToggleButton";
 
 export default function MealCard({ meal }) {
   const [open, setOpen] = React.useState(false);
@@ -52,9 +50,7 @@ export default function MealCard({ meal }) {
           }
         />
         <CardActions sx={{ display: "flex", justifyContent: "flex-end", p: 2 }}>
-          <IconButton aria-label="add to favorites" sx={{ p: 0 }}>
-            <FavoriteBorderOutlinedIcon />
-          </IconButton>
+          <FavoriteToggleButton meal={meal} />
         </CardActions>
       </Card>
 
