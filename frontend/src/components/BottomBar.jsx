@@ -21,7 +21,7 @@ export default function LabelBottomNavigation() {
 
   return (
     <BottomNavigation
-      sx={{ position: "fixed", bottom: 0, width: "100%" }}
+      sx={{ position: "fixed", bottom: 0, width: "100%", height: 45 }}
       value={value}
       onChange={handleChange}
     >

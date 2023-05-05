@@ -28,24 +28,14 @@ export default function MealCard({ meal }) {
           maxWidth: 300,
           height: 150,
           display: "flex",
+          justifyContent: "space-between",
           ":hover": { backgroundColor: "#e2e2e2" },
           ":active": { backgroundColor: "lightgray" },
-          ml: 2,
         }}
       >
         <CardHeader
-          sx={{ display: "flex", pr: 2 }}
+          sx={{ display: "flex", p: 1 }}
           avatar={
-            <Avatar
-              sx={{
-                width: 95,
-                height: 95,
-                boxShadow:
-                  "0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px rgba(0, 0, 0, 0.3)",
-              }}
-              aria-label="recipe"
-              src={meal.strMealThumb}
-            />
             isMobile ? (
               <Avatar
                 sx={{ width: 65, height: 65 }}
@@ -77,7 +67,7 @@ export default function MealCard({ meal }) {
           }
           onClick={handleOpen}
         />
-        <CardActions sx={{ display: "flex", justifyContent: "flex-end", p: 2 }}>
+        <CardActions sx={{ display: "flex", justifyContent: "flex-end", p: 1 }}>
           <FavoriteToggleButton />
         </CardActions>
       </Card>

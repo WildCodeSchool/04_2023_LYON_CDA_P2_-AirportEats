@@ -148,47 +148,30 @@ export default function MealModal({ open, handleClose, meal }) {
                 </Typography>
                 <Button onClick={handleIncreaseQuantity} sx={btnStyle}>
                   <AddCircleIcon fontSize="medium" />
-              <Box sx={{ display: "flex", ml: 4 }}>
-                <Button
-                  variant="contained"
-                  onClick={handleDecreaseQuantity}
-                  sx={btnStyle}
-                >
-                  -
-                </Button>
-                <Typography variant="h6" sx={{ mx: 2 }}>
-                  {quantity}
-                </Typography>
-                <Button
-                  variant="contained"
-                  onClick={handleIncreaseQuantity}
-                  sx={btnStyle}
-                >
-                  +
                 </Button>
               </Box>
-            </Box>
 
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                paddingTop: "50px",
-              }}
-            >
-              <Button
-                variant="contained"
-                onClick={() => {
-                  handleClose();
-                  setQuantity(0);
-                  handleAddToCart(meal, price, quantity);
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  paddingTop: "50px",
                 }}
-                sx={{ borderRadius: "16px", width: "200px" }}
-                disabled={!quantity}
               >
-                Ajouter au panier
-              </Button>
-            </div>
+                <Button
+                  variant="contained"
+                  onClick={() => {
+                    handleClose();
+                    setQuantity(0);
+                    handleAddToCart(meal, price, quantity);
+                  }}
+                  sx={{ borderRadius: "16px", width: "200px" }}
+                  disabled={!quantity}
+                >
+                  Ajouter au panier
+                </Button>
+              </div>
+            </Box>
           </Box>
         </Fade>
       </Modal>
