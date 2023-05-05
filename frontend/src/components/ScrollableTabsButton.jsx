@@ -4,20 +4,11 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
-import FastfoodOutlinedIcon from "@mui/icons-material/FastfoodOutlined";
-import DinnerDiningOutlinedIcon from "@mui/icons-material/DinnerDiningOutlined";
-import RiceBowlOutlinedIcon from "@mui/icons-material/RiceBowlOutlined";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import allCategories from "../ressources/allCategories";
 
 export default function ScrollableTabsButton() {
   const { category } = useParams();
-
-  const icons = {
-    Italian: DinnerDiningOutlinedIcon,
-    American: FastfoodOutlinedIcon,
-    Japanese: RiceBowlOutlinedIcon,
-  };
 
   const [value, setValue] = React.useState(category || false);
 
@@ -54,7 +45,7 @@ export default function ScrollableTabsButton() {
               value={thisCategory.cName}
               icon={
                 <Icon
-                  component={icons[thisCategory.cName]}
+                  component={thisCategory.icon}
                   sx={{
                     color: "black",
                     width: "50px",
