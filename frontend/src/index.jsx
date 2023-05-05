@@ -17,7 +17,7 @@ const loadApi = async (category) => {
     .then((response) => response.json())
     .then((data) => data)
     .catch(() => {
-      enqueueSnackbar("Il y a une erreur", { variant: "error" });
+      enqueueSnackbar("An error has occured", { variant: "error" });
       redirect("/meals");
     });
   return meals;

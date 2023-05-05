@@ -7,6 +7,7 @@ import Select from "@mui/material/Select";
 import { useState } from "react";
 import { Button, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { enqueueSnackbar } from "notistack";
 import BackButton from "@components/BackButton";
 
 export default function Payment() {
@@ -17,6 +18,7 @@ export default function Payment() {
     event.preventDefault();
     const path = `/confirmation`;
     navigate(path);
+    return enqueueSnackbar("Command confirmed", { variant: "success" });
   };
 
   const handleChange = (event) => {

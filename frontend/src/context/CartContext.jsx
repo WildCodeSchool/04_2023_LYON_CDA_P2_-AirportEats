@@ -16,7 +16,7 @@ export function CartProvider({ children }) {
     const validation = true;
     if (validation) {
       setCart(cart.filter((meal) => meal.idMeal !== idMeal));
-      return enqueueSnackbar("article supprimé", { variant: "success" });
+      return enqueueSnackbar("Product removed", { variant: "success" });
     }
     return false;
   }
