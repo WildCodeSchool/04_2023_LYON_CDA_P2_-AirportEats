@@ -6,7 +6,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
-import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
@@ -22,8 +21,8 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import Badge from "@mui/material/Badge";
 import { Link } from "react-router-dom";
-import Logo from "../assets/AirportEatsfavicon_nobg.png";
-import Title from "../assets/AirportEatsLogo.png";
+import PlaneLogo from "../assets/airplaneAE.png";
+import TitlePNG from "../assets/AEatsLogo.png";
 
 const drawerWidth = 240;
 
@@ -120,28 +119,32 @@ export default function PersistentDrawerLeft() {
           </IconButton>
           <Box
             sx={{
-              background: `url(${Logo})`,
-              backgroundSize: "cover",
-              width: 40,
-              height: 40,
+              display: "flex",
+              alignItems: "center",
             }}
-          />
-          <Box
-            sx={{
-              background: `url(${Title})`,
-              backgroundSize: "cover",
-              width: 110,
-              height: 30,
-            }}
-          />
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ color: "black" }}
+            component={Link}
+            to="/"
           >
-            AirportEats
-          </Typography>
+            <Box
+              sx={{
+                background: `url(${PlaneLogo})`,
+                backgroundSize: "contain",
+                backgroundRepeat: "no-repeat",
+                width: 25,
+                height: 25,
+                marginRight: 1,
+              }}
+            />
+            <Box
+              sx={{
+                background: `url(${TitlePNG})`,
+                backgroundSize: "contain",
+                backgroundRepeat: "no-repeat",
+                width: 120,
+                height: 25,
+              }}
+            />
+          </Box>
           <Box sx={{ flexGrow: 1 }} />
           <IconButton
             size="large"
