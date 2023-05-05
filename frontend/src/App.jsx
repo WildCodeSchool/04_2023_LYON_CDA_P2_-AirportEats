@@ -4,6 +4,7 @@ import BottomBar from "@components/BottomBar";
 import { useEffect } from "react";
 import "./App.css";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import LogoTitle from "@components/LogoTitle";
 import NavBar from "./components/NavBar";
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
   return (
     <div className="App">
       {isMobile ? <BottomBar /> : <NavBar />}
+      {isMobile && <LogoTitle />}
       <main style={{ margin: "0 5px 50px 5px" }}>
         <Outlet />
       </main>
