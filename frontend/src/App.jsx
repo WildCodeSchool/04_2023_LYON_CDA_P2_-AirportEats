@@ -1,9 +1,10 @@
+import * as React from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import NavBar from "@components/NavBar";
 import BottomBar from "@components/BottomBar";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import "./App.css";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import NavBar from "./components/NavBar";
 
 export default function App() {
   const location = useLocation().pathname;

@@ -1,3 +1,4 @@
+import BackButton from "@components/BackButton";
 import * as React from "react";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
@@ -10,6 +11,11 @@ export default function Favorites() {
 
   return (
     <>
+      <div
+        style={{ display: "flex", justifyContent: "right", marginRight: 50 }}
+      >
+        <BackButton />
+      </div>
       <h1>My favorites</h1>
       <Box sx={{ width: "100%", p: 5 }}>
         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>

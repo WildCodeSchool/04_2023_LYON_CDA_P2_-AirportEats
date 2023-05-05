@@ -1,6 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import CartCard from "@components/CartCard";
+import BackButton from "@components/BackButton";
 import { useCart } from "../context/CartContext";
 
 export default function Cart() {
@@ -9,6 +10,11 @@ export default function Cart() {
 
   return (
     <>
+      <div
+        style={{ display: "flex", justifyContent: "right", marginRight: 50 }}
+      >
+        <BackButton />
+      </div>
       <h1>My cart</h1>
       {/* <div>
         {cart.map((meal) => {
