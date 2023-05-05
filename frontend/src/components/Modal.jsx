@@ -5,8 +5,9 @@ import Fade from "@mui/material/Fade";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-// import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 import Typography from "@mui/material/Typography";
 import PropTypes from "prop-types";
 import { useCart } from "../context/CartContext";
@@ -23,18 +24,21 @@ const style = {
   boxShadow: 24,
   p: 4,
   borderRadius: "20px",
+  "@media (max-width: 428px)": {
+    width: "270px",
+  },
 };
 
 const imgStyle = {
-  maxWidth: "100%",
-  maxHeight: "35vh",
+  maxWidth: "70%",
+  // maxHeight: "35vh",
   borderRadius: "50%",
+  boxShadow:
+    "0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px rgba(0, 0, 0, 0.3)",
 };
 
 const btnStyle = {
-  boxShadow:
-    "0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px rgba(0, 0, 0, 0.3)",
-  borderRadius: "39px",
+  minWidth: "2px",
 };
 
 const titleStyle = {
@@ -126,23 +130,17 @@ export default function MealModal({ open, handleClose, meal }) {
               <Typography variant="h6" sx={{ mr: 2 }}>
                 {price} €
               </Typography>
-              <Button
-                variant="contained"
-                onClick={handleDecreaseQuantity}
-                sx={btnStyle}
-              >
-                -
-              </Button>
-              <Typography variant="h6" sx={{ mx: 2 }}>
-                {quantity}
-              </Typography>
-              <Button
-                variant="contained"
-                onClick={handleIncreaseQuantity}
-                sx={btnStyle}
-              >
-                +
-              </Button>
+              <Box sx={{ display: "flex", ml: "5" }}>
+                <Button onClick={handleDecreaseQuantity} sx={btnStyle}>
+                  <RemoveCircleIcon />
+                </Button>
+                <Typography variant="h5" sx={{ mx: 2 }}>
+                  {quantity}
+                </Typography>
+                <Button onClick={handleIncreaseQuantity} sx={btnStyle}>
+                  <AddCircleIcon fontSize="medium" />
+                </Button>
+              </Box>
             </Box>
 
             <div
@@ -159,7 +157,7 @@ export default function MealModal({ open, handleClose, meal }) {
                   setQuantity(0);
                   handleAddToCart(meal, price, quantity);
                 }}
-                sx={{ borderRadius: "16px" }}
+                sx={{ borderRadius: "16px", width: "200px" }}
                 disabled={!quantity}
               >
                 Ajouter au panier
