@@ -28,13 +28,13 @@ export default function MealCard({ meal }) {
           maxWidth: 300,
           height: 150,
           display: "flex",
+          justifyContent: "space-between",
           ":hover": { backgroundColor: "#e2e2e2" },
           ":active": { backgroundColor: "lightgray" },
-          ml: 2,
         }}
       >
         <CardHeader
-          sx={{ display: "flex", pr: 2 }}
+          sx={{ display: "flex", p: 1 }}
           avatar={
             isMobile ? (
               <Avatar
@@ -67,7 +67,7 @@ export default function MealCard({ meal }) {
           }
           onClick={handleOpen}
         />
-        <CardActions sx={{ display: "flex", justifyContent: "flex-end", p: 2 }}>
+        <CardActions sx={{ display: "flex", justifyContent: "flex-end", p: 1 }}>
           <FavoriteToggleButton />
         </CardActions>
       </Card>
