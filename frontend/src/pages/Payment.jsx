@@ -7,6 +7,7 @@ import Select from "@mui/material/Select";
 import { useState } from "react";
 import { Button, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import BackButton from "@components/BackButton";
 
 export default function Payment() {
   const [gate, setGate] = useState(0);
@@ -24,6 +25,11 @@ export default function Payment() {
 
   return (
     <>
+      <div
+        style={{ display: "flex", justifyContent: "right", marginRight: 50 }}
+      >
+        <BackButton />
+      </div>
       <h1>Payment & Boarding</h1>
       <Typography>Contact Details</Typography>
       <Box
