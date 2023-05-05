@@ -23,6 +23,7 @@ import Badge from "@mui/material/Badge";
 import { Link } from "react-router-dom";
 import PlaneLogo from "../assets/airplaneAE.png";
 import TitlePNG from "../assets/AEatsLogo.png";
+import { useCart } from "../context/CartContext";
 
 const drawerWidth = 240;
 
@@ -73,6 +74,8 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 export default function PersistentDrawerLeft() {
+  const { cart } = useCart();
+
   // Pour rajouter l'icon il faut aller dans le drawer
   const drawerItems = [
     {
@@ -153,7 +156,14 @@ export default function PersistentDrawerLeft() {
             component={Link}
             to="/cart"
           >
-            <Badge badgeContent={4} color="error">
+            <Badge
+              badgeContent={cart.reduce(
+                (acc, currentProduct) =>
+                  acc + parseInt(currentProduct.quantity, 10),
+                0
+              )}
+              color="primary"
+            >
               <ShoppingBagOutlinedIcon />
             </Badge>
           </IconButton>
