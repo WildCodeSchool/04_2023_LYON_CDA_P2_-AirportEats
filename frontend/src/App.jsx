@@ -20,7 +20,7 @@ export default function App() {
   return (
     <div className="App">
       {isMobile ? null : <NavBar />}
-      <main>
+      <main style={{ marginBottom: 30 }}>
         <Outlet />
       </main>
       {isMobile ? <BottomBar /> : null}
