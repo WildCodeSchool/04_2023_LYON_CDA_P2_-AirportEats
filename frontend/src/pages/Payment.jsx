@@ -58,7 +58,7 @@ export default function Payment() {
           </Select>
         </FormControl>
       </Box>
-      <Box sx={{ display: "flex", justifyContent: "left", p: 1, ml: 77 }}>
+      <Box sx={{ display: "flex", justifyContent: "center", p: 1 }}>
         <TextField
           id="phone-number"
           label="Phone number"
@@ -86,7 +86,7 @@ export default function Payment() {
           required
         />
       </Box>
-      <Box sx={{ display: "flex", justifyContent: "left", ml: 77 }}>
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
         <TextField
           id="cryptogram"
           label="Cryptogram"

@@ -60,7 +60,16 @@ export default function MealModal({ open, handleClose, meal }) {
   const { toggleFavorite } = useFavorites();
 
   // Function pour random price
-  const price = 10;
+  function randomPrice(id) {
+    if (id % 3 === 0) {
+      return 10;
+    }
+    if (id % 2 === 0) {
+      return 6;
+    }
+    return 8;
+  }
+  const price = randomPrice(Number(meal.idMeal));
 
   const { handleAddToCart } = useCart();
 
@@ -139,6 +148,23 @@ export default function MealModal({ open, handleClose, meal }) {
                 </Typography>
                 <Button onClick={handleIncreaseQuantity} sx={btnStyle}>
                   <AddCircleIcon fontSize="medium" />
+              <Box sx={{ display: "flex", ml: 4 }}>
+                <Button
+                  variant="contained"
+                  onClick={handleDecreaseQuantity}
+                  sx={btnStyle}
+                >
+                  -
+                </Button>
+                <Typography variant="h6" sx={{ mx: 2 }}>
+                  {quantity}
+                </Typography>
+                <Button
+                  variant="contained"
+                  onClick={handleIncreaseQuantity}
+                  sx={btnStyle}
+                >
+                  +
                 </Button>
               </Box>
             </Box>
