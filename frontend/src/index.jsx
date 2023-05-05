@@ -1,5 +1,6 @@
 import Favorites from "@pages/Favorites";
 import { redirect } from "react-router-dom";
+import { enqueueSnackbar } from "notistack";
 import Meals from "./pages/Meals";
 import Cart from "./pages/Cart";
 import Payment from "./pages/Payment";
@@ -15,7 +16,10 @@ const loadApi = async (category) => {
   )
     .then((response) => response.json())
     .then((data) => data)
-    .catch(() => redirect("/meals"));
+    .catch(() => {
+      enqueueSnackbar("Il y a une erreur", { variant: "error" });
+      redirect("/meals");
+    });
   return meals;
   // } else return redirect("/meals");
 };
