@@ -1,9 +1,11 @@
+import * as React from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import NavBar from "@components/NavBar";
 import BottomBar from "@components/BottomBar";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import "./App.css";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import LogoTitle from "@components/LogoTitle";
+import NavBar from "./components/NavBar";
 
 export default function App() {
   const location = useLocation().pathname;
@@ -18,11 +20,11 @@ export default function App() {
 
   return (
     <div className="App">
-      {isMobile ? null : <NavBar />}
-      <main>
+      {isMobile ? <BottomBar /> : <NavBar />}
+      {isMobile && <LogoTitle />}
+      <main style={{ margin: "0 5px 50px 5px" }}>
         <Outlet />
       </main>
-      {isMobile ? <BottomBar /> : null}
     </div>
   );
 }

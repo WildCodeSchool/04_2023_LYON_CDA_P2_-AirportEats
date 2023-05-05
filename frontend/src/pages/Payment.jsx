@@ -7,6 +7,8 @@ import Select from "@mui/material/Select";
 import { useState } from "react";
 import { Button, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { enqueueSnackbar } from "notistack";
+import BackButton from "@components/BackButton";
 
 export default function Payment() {
   const [gate, setGate] = useState(0);
@@ -16,6 +18,7 @@ export default function Payment() {
     event.preventDefault();
     const path = `/confirmation`;
     navigate(path);
+    return enqueueSnackbar("Command confirmed", { variant: "success" });
   };
 
   const handleChange = (event) => {
@@ -24,6 +27,11 @@ export default function Payment() {
 
   return (
     <>
+      <div
+        style={{ display: "flex", justifyContent: "right", marginRight: 50 }}
+      >
+        <BackButton />
+      </div>
       <h1>Payment & Boarding</h1>
       <Typography>Contact Details</Typography>
       <Box
@@ -58,7 +66,7 @@ export default function Payment() {
           </Select>
         </FormControl>
       </Box>
-      <Box sx={{ display: "flex", justifyContent: "left", p: 1, ml: 77 }}>
+      <Box sx={{ display: "flex", justifyContent: "center", p: 1 }}>
         <TextField
           id="phone-number"
           label="Phone number"
@@ -86,7 +94,7 @@ export default function Payment() {
           required
         />
       </Box>
-      <Box sx={{ display: "flex", justifyContent: "left", ml: 77 }}>
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
         <TextField
           id="cryptogram"
           label="Cryptogram"

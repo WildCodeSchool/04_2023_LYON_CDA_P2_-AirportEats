@@ -12,8 +12,13 @@ export default function Meals() {
   return (
     <>
       <h1>{category}</h1>
-      <Box sx={{ width: "100%", p: 5 }}>
-        <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+      <Box sx={{ width: "100%", display: "flex" }}>
+        <Grid
+          container
+          rowSpacing={2}
+          columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+          sx={{ justifyContent: "center" }}
+        >
           {meals.map((meal) => {
             return (
               <Grid key={meal.idMeal} item md={3} xs={8}>
