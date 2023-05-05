@@ -21,6 +21,7 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import Badge from "@mui/material/Badge";
 import { Link } from "react-router-dom";
+import { Icon } from "@mui/material";
 import { useCart } from "../context/CartContext";
 import LogoTitle from "./LogoTitle";
 
@@ -81,16 +82,19 @@ export default function PersistentDrawerLeft() {
       id: 0,
       text: "Home",
       link: "/",
+      icon: HomeOutlinedIcon,
     },
     {
       id: 1,
       text: "Cart",
       link: "/cart",
+      icon: ShoppingCartOutlinedIcon,
     },
     {
       id: 2,
       text: "Favorites",
       link: "/favorites",
+      icon: FavoriteBorderOutlinedIcon,
     },
   ];
 
@@ -173,9 +177,7 @@ export default function PersistentDrawerLeft() {
                 to={item.link}
               >
                 <ListItemIcon>
-                  {item.id === 0 && <HomeOutlinedIcon />}
-                  {item.id === 1 && <ShoppingCartOutlinedIcon />}
-                  {item.id === 2 && <FavoriteBorderOutlinedIcon />}
+                  <Icon component={item.icon} />
                 </ListItemIcon>
                 <ListItemText primary={item.text} />
               </ListItemButton>
