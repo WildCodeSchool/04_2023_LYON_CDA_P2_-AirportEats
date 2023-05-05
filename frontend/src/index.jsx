@@ -30,19 +30,17 @@ const Routes = [
     element: <App />,
     children: [
       {
-        path: "meals/",
+        index: true,
         element: <Home />,
-        children: [
-          {
-            path: ":category",
-            element: <Meals />,
-            loader: ({ params }) => {
-              return loadApi(params.category).then((response) => {
-                return response;
-              });
-            },
-          },
-        ],
+      },
+      {
+        path: "meals/:category",
+        element: <Meals />,
+        loader: ({ params }) => {
+          return loadApi(params.category).then((response) => {
+            return response;
+          });
+        },
       },
       {
         path: "cart",
