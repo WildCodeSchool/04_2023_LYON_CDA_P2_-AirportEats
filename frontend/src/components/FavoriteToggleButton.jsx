@@ -19,6 +19,6 @@ export default function FavoriteToggleButton() {
       ) : (
         <FavoriteBorderIcon htmlColor="#E7B09F" />
       )}
-    </IconButton>
+    </ToggleButton>
   );
 }
