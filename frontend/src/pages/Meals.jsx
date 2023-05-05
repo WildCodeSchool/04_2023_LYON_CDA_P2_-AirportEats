@@ -3,14 +3,15 @@ import * as React from "react";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import MealCard from "@components/MealCard";
+import ScrollableTabsButton from "@components/ScrollableTabsButton";
 
 export default function Meals() {
   const { category } = useParams();
-  // Déstructuration ???
   const { meals } = useLoaderData();
 
   return (
     <>
+      <ScrollableTabsButton />
       <h1>{category}</h1>
       <Box sx={{ width: "100%", display: "flex" }}>
         <Grid
