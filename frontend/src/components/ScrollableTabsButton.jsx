@@ -8,6 +8,9 @@ import FastfoodOutlinedIcon from "@mui/icons-material/FastfoodOutlined";
 import DinnerDiningOutlinedIcon from "@mui/icons-material/DinnerDiningOutlined";
 import RiceBowlOutlinedIcon from "@mui/icons-material/RiceBowlOutlined";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import RamenDiningOutlinedIcon from "@mui/icons-material/RamenDiningOutlined";
+import BrunchDiningOutlinedIcon from "@mui/icons-material/BrunchDiningOutlined";
+import TapasOutlinedIcon from "@mui/icons-material/TapasOutlined";
 import allCategories from "../ressources/allCategories";
 
 export default function ScrollableTabsButton() {
@@ -17,6 +20,9 @@ export default function ScrollableTabsButton() {
     Italian: DinnerDiningOutlinedIcon,
     American: FastfoodOutlinedIcon,
     Japanese: RiceBowlOutlinedIcon,
+    French: BrunchDiningOutlinedIcon,
+    Mexican: TapasOutlinedIcon,
+    Thai: RamenDiningOutlinedIcon,
   };
 
   const [value, setValue] = React.useState(category || false);
