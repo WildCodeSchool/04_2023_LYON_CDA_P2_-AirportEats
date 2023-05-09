@@ -6,10 +6,10 @@ import Box from "@mui/material/Box";
 import MealCard from "@components/MealCard";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
+import ScrollableTabsButton from "@components/ScrollableTabsButton";
 
 export default function Meals() {
   const { category } = useParams();
-  // Déstructuration ???
   const { meals } = useLoaderData();
 
   const theme = useTheme();

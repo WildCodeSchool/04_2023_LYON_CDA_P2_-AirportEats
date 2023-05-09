@@ -5,13 +5,12 @@ import Fade from "@mui/material/Fade";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import Typography from "@mui/material/Typography";
 import PropTypes from "prop-types";
 import { useCart } from "../context/CartContext";
-import { useFavorites } from "../context/FavoritesContext";
+import FavoriteToggleButton from "./FavoriteToggleButton";
 
 const style = {
   position: "absolute",
@@ -58,7 +57,6 @@ const tagStyle = {
 
 export default function MealModal({ open, handleClose, meal }) {
   const [quantity, setQuantity] = React.useState(0);
-  const { toggleFavorite } = useFavorites();
 
   // Function pour random price
   function randomPrice(id) {
@@ -117,13 +115,7 @@ export default function MealModal({ open, handleClose, meal }) {
 
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <span style={tagStyle}>2 mins away</span>
-              <IconButton
-                aria-label="add to favorites"
-                sx={{ p: 0 }}
-                onClick={() => toggleFavorite(meal)}
-              >
-                <FavoriteBorderOutlinedIcon />
-              </IconButton>
+              <FavoriteToggleButton meal={meal} />
             </div>
 
             <div style={titleStyle}>

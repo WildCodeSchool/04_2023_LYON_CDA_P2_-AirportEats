@@ -17,7 +17,7 @@ const loadApi = async (category) => {
     .then((response) => response.json())
     .then((data) => data)
     .catch(() => {
-      enqueueSnackbar("Il y a une erreur", { variant: "error" });
+      enqueueSnackbar("An error has occured", { variant: "error" });
       redirect("/meals");
     });
   return meals;
@@ -30,19 +30,17 @@ const Routes = [
     element: <App />,
     children: [
       {
-        path: "meals/",
+        index: true,
         element: <Home />,
-        children: [
-          {
-            path: ":category",
-            element: <Meals />,
-            loader: ({ params }) => {
-              return loadApi(params.category).then((response) => {
-                return response;
-              });
-            },
-          },
-        ],
+      },
+      {
+        path: "meals/:category",
+        element: <Meals />,
+        loader: ({ params }) => {
+          return loadApi(params.category).then((response) => {
+            return response;
+          });
+        },
       },
       {
         path: "cart",
