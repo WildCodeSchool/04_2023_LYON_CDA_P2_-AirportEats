@@ -11,8 +11,9 @@ export default function BackButton() {
 
   return (
     <div style={{ display: "flex", w: "100%", justifyContent: "left" }}>
-      <Button onClick={back}>
-        <ArrowBackIcon sx={{ color: "black" }} />
+      <Button onClick={back} color="secondary">
+        <ArrowBackIcon sx={{ pr: 1 }} color="secondary" />
+        back
       </Button>
     </div>
   );

@@ -17,6 +17,7 @@ export default function Meals() {
 
   return (
     <>
+      <ScrollableTabsButton />
       <Typography
         variant="h5"
         sx={{ fontWeight: "600", margin: "50px", textAlign: "left" }}
