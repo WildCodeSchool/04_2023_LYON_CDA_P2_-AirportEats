@@ -1,18 +1,14 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import * as React from "react";
-import { Typography } from "@mui/material";
+import { Typography, useMediaQuery } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import MealCard from "@components/MealCard";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { useTheme } from "@mui/material/styles";
 import ScrollableTabsButton from "@components/ScrollableTabsButton";
 
 export default function Meals() {
   const { category } = useParams();
   const { meals } = useLoaderData();
-
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery("(max-width: 428px)");
 
   return (
     <>
