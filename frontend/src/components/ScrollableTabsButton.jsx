@@ -57,6 +57,7 @@ export default function ScrollableTabsButton() {
                   component={icons[thisCategory.cName]}
                   sx={{
                     color: "black",
+                    opacity: "70%",
                     width: "50px",
                     margin: "20px",
                     height: "30px",

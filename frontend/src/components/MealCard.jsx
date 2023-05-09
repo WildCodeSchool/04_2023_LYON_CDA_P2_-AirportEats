@@ -51,7 +51,7 @@ export default function MealCard({ meal }) {
             )
           }
           title={
-            <Typography variant="subtitle2">
+            <Typography variant="subtitle2" sx={{ fontWeight: "600" }}>
               {meal.strMeal.length > limit
                 ? `${meal.strMeal.substring(0, limit)} ...`
                 : meal.strMeal}

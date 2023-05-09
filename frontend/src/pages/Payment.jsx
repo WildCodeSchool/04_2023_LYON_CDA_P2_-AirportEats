@@ -25,13 +25,11 @@ export default function Payment() {
 
   return (
     <>
-      <div
-        style={{ display: "flex", justifyContent: "right", marginRight: 50 }}
-      >
+      <div style={{ display: "flex", justifyContent: "left", margin: 50 }}>
         <BackButton />
       </div>
       <h1>Payment & Boarding</h1>
-      <Typography>Contact Details</Typography>
+      <Typography sx={{ fontWeight: "600" }}>Contact Details</Typography>
       <Box
         component="form"
         sx={{
@@ -73,7 +71,7 @@ export default function Payment() {
           required
         />
       </Box>
-      <Typography sx={{ pt: 5 }}>Payment Method</Typography>
+      <Typography sx={{ pt: 5, fontWeight: "600" }}>Payment Method</Typography>
       <Box sx={{ display: "flex", justifyContent: "center", ml: 10 }}>
         <TextField
           id="card-number"
@@ -105,9 +103,11 @@ export default function Payment() {
         onClick={handleSubmit}
         variant="contained"
         sx={{
+          color: "white",
           m: 5,
           borderRadius: 3,
           backgroundColor: "#e1b1b1",
+          width: "180px",
           ":hover": {
             bgcolor: "#e1b1b1",
           },

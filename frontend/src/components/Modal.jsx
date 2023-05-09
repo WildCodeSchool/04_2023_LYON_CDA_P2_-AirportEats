@@ -53,6 +53,7 @@ const tagStyle = {
   borderRadius: "8px",
   fontSize: "0.8rem",
   marginRight: "1rem",
+  fontWeight: "700",
 };
 
 export default function MealModal({ open, handleClose, meal }) {
@@ -128,50 +129,55 @@ export default function MealModal({ open, handleClose, meal }) {
             <div style={titleStyle}>
               <Typography
                 id="transition-modal-title"
-                variant="h6"
+                variant="h5"
                 component="h2"
+                sx={{ fontWeight: "600" }}
               >
                 {meal.strMeal}
               </Typography>
             </div>
 
-            <Box display="flex" alignItems="center" mt={2}>
-              <Typography variant="h6" sx={{ mr: 2 }}>
+            <Box
+              display="flex"
+              alignItems="center"
+              justifyContent="space-around"
+              mt={2}
+            >
+              <Typography variant="h6" sx={{ mr: 2, fontWeight: "600" }}>
                 {price} €
               </Typography>
               <Box sx={{ display: "flex", ml: "5" }}>
                 <Button onClick={handleDecreaseQuantity} sx={btnStyle}>
                   <RemoveCircleIcon />
                 </Button>
-                <Typography variant="h5" sx={{ mx: 2 }}>
+                <Typography variant="h5" sx={{ mx: 2, fontWeight: "600" }}>
                   {quantity}
                 </Typography>
                 <Button onClick={handleIncreaseQuantity} sx={btnStyle}>
                   <AddCircleIcon fontSize="medium" />
                 </Button>
               </Box>
-
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  paddingTop: "50px",
-                }}
-              >
-                <Button
-                  variant="contained"
-                  onClick={() => {
-                    handleClose();
-                    setQuantity(0);
-                    handleAddToCart(meal, price, quantity);
-                  }}
-                  sx={{ borderRadius: "16px", width: "200px" }}
-                  disabled={!quantity}
-                >
-                  Ajouter au panier
-                </Button>
-              </div>
             </Box>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                paddingTop: "50px",
+              }}
+            >
+              <Button
+                variant="contained"
+                onClick={() => {
+                  handleClose();
+                  setQuantity(0);
+                  handleAddToCart(meal, price, quantity);
+                }}
+                sx={{ borderRadius: "16px", width: "200px", color: "white" }}
+                disabled={!quantity}
+              >
+                Ajouter au panier
+              </Button>
+            </div>
           </Box>
         </Fade>
       </Modal>
