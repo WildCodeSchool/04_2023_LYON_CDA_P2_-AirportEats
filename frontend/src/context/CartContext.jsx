@@ -56,7 +56,7 @@ export function CartProvider({ children }) {
         totalPrice: newPrice * newQuantity,
       },
     ]);
-    return enqueueSnackbar("Article ajouté", { variant: "success" });
+    return enqueueSnackbar("Article added to cart", { variant: "success" });
   }
 
   function handleEmptyCart() {
