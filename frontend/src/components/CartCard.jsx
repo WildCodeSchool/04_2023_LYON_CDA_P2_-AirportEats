@@ -1,6 +1,6 @@
 import React from "react";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
-import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
+import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
+import RemoveOutlinedIcon from "@mui/icons-material/RemoveOutlined";
 // import FavoriteIcon from "@mui/icons-material/Favorite";
 import PropTypes from "prop-types";
 import {
@@ -20,19 +20,19 @@ export default function CartCard({ meal }) {
   const { handleModifyQuantity } = useCart();
 
   return (
-    <Card sx={{ maxWidth: 300, display: "flex", m: 1, borderRadius: 5 }}>
+    <Card sx={{ maxWidth: 340, display: "flex", m: 1, borderRadius: 5 }}>
       <Stack direction="column">
         <CardHeader
           sx={{ display: "flex", pr: 2, padding: "4px" }}
           avatar={
             <Avatar
-              sx={{ width: 65, height: 65, m: 2 }}
+              sx={{ width: 70, height: 70, m: 2 }}
               aria-label="recipe"
               src={meal.strMealThumb}
             />
           }
           title={
-            <Typography variant="subtitle2">
+            <Typography variant="subtitle2" fontWeight="600">
               {meal.strMeal.length > 30
                 ? `${meal.strMeal.substring(0, 30)} ...`
                 : meal.strMeal}
@@ -65,9 +65,9 @@ export default function CartCard({ meal }) {
                   handleModifyQuantity(meal.idMeal, meal.quantity - 1)
                 }
               >
-                <RemoveCircleIcon />
+                <RemoveOutlinedIcon />
               </IconButton>
-              <Typography variant="body1" sx={{ mt: 1 }}>
+              <Typography variant="body1" sx={{ mt: 1, fontWeight: "600" }}>
                 {meal.quantity}
               </Typography>
               <IconButton
@@ -76,7 +76,7 @@ export default function CartCard({ meal }) {
                   handleModifyQuantity(meal.idMeal, meal.quantity + 1)
                 }
               >
-                <AddCircleIcon />
+                <AddOutlinedIcon />
               </IconButton>
             </Box>
           </Stack>

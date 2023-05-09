@@ -12,7 +12,12 @@ export default function Favorites() {
   return (
     <>
       <div
-        style={{ display: "flex", justifyContent: "right", marginRight: 50 }}
+        style={{
+          display: "flex",
+          justifyContent: "left",
+          margin: 50,
+          color: "black",
+        }}
       >
         <BackButton />
       </div>
