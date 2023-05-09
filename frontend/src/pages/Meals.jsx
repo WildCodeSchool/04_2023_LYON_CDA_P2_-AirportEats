@@ -4,16 +4,11 @@ import { Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import MealCard from "@components/MealCard";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { useTheme } from "@mui/material/styles";
 import ScrollableTabsButton from "@components/ScrollableTabsButton";
 
 export default function Meals() {
   const { category } = useParams();
   const { meals } = useLoaderData();
-
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <>
@@ -30,10 +25,7 @@ export default function Meals() {
           rowSpacing={2}
           columnSpacing={{ xs: 1, sm: 2, md: 3 }}
           sx={{
-            ...(isMobile && {
-              flexFlow: "column wrap",
-              overflow: "auto",
-            }),
+            justifyContent: "center",
           }}
         >
           {meals.map((meal) => (
