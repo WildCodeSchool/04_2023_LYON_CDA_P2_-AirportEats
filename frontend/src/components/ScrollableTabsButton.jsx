@@ -51,6 +51,8 @@ export default function ScrollableTabsButton() {
         scrollButtons="auto"
         allowScrollButtonsMobile={false}
         aria-label="scrollable prevent tabs example"
+        textColor="secondary"
+        indicatorColor="secondary"
       >
         {allCategories.map((thisCategory) => {
           return (
