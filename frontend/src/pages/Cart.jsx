@@ -10,12 +10,10 @@ export default function Cart() {
 
   return (
     <>
-      <div
-        style={{ display: "flex", justifyContent: "right", marginRight: 50 }}
-      >
+      <div style={{ display: "flex", justifyContent: "left", margin: 50 }}>
         <BackButton />
       </div>
-      <h1>My cart</h1>
+      <h1>My Cart</h1>
       {/* <div>
         {cart.map((meal) => {
           return (
@@ -55,7 +53,7 @@ export default function Cart() {
           return <CartCard key={meal.idMeal} meal={meal} />;
         })}
       </Box>
-      <Typography variant="h5">
+      <Typography variant="h5" fontWeight="600">
         Total :{" "}
         {cart
           .reduce(
@@ -73,9 +71,11 @@ export default function Cart() {
         to="/payment"
         variant="contained"
         sx={{
+          color: "white",
           m: 5,
           borderRadius: 3,
           backgroundColor: "#e1b1b1",
+          width: "180px",
         }}
       >
         Confirm

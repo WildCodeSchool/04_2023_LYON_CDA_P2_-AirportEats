@@ -11,9 +11,9 @@ export const mainTheme = createTheme({
   },
   typography: {
     fontFamily: ["Darker Grotesque", "sans-serif"].join(","),
-    // fontSize: 22,
+    fontSize: 16,
     button: {
-      fontWeight: 600,
+      fontWeight: 700,
     },
   },
 });
