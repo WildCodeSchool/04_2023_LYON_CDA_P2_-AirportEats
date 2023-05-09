@@ -74,7 +74,7 @@ export default function Payment() {
         />
       </Box>
       <Typography sx={{ pt: 5, fontWeight: "600" }}>Payment Method</Typography>
-      <Box sx={{ display: "flex", justifyContent: "center", ml: 10 }}>
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
         <TextField
           id="card-number"
           label="Card number"
