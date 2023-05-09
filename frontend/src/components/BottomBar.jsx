@@ -10,7 +10,7 @@ export default function LabelBottomNavigation() {
   const location = useLocation().pathname;
 
   const [value, setValue] = React.useState(
-    location.includes("meals") ? "/meals" : location
+    location.includes("meals") ? "/" : location
   );
   const navigate = useNavigate();
 
@@ -25,11 +25,7 @@ export default function LabelBottomNavigation() {
       value={value}
       onChange={handleChange}
     >
-      <BottomNavigationAction
-        label="•"
-        value="/meals"
-        icon={<HomeOutlinedIcon />}
-      />
+      <BottomNavigationAction label="•" value="/" icon={<HomeOutlinedIcon />} />
       <BottomNavigationAction
         label="•"
         value="/cart"

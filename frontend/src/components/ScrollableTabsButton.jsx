@@ -51,6 +51,8 @@ export default function ScrollableTabsButton() {
         scrollButtons="auto"
         allowScrollButtonsMobile={false}
         aria-label="scrollable prevent tabs example"
+        textColor="secondary"
+        indicatorColor="secondary"
       >
         {allCategories.map((thisCategory) => {
           return (
@@ -63,6 +65,7 @@ export default function ScrollableTabsButton() {
                   component={icons[thisCategory.cName]}
                   sx={{
                     color: "black",
+                    opacity: "70%",
                     width: "50px",
                     margin: "20px",
                     height: "30px",

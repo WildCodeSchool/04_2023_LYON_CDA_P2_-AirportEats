@@ -5,12 +5,15 @@ export const mainTheme = createTheme({
     primary: {
       main: "#E7B09F",
     },
+    secondary: {
+      main: "#e57373",
+    },
   },
   typography: {
     fontFamily: ["Darker Grotesque", "sans-serif"].join(","),
-    // fontSize: 22,
+    fontSize: 16,
     button: {
-      fontWeight: 600,
+      fontWeight: 700,
     },
   },
 });

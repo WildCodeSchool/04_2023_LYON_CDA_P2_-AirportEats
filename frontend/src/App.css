@@ -1,10 +1,5 @@
 body {
-  background: linear-gradient(
-    125.31deg,
-    #e1b1b1 0%,
-    #f6f6f6 47.92%,
-    #f6f6f6 100%
-  );
+  background: linear-gradient(125.31deg, #e1b1b1 0%, #f6f6f6 37%, #f6f6f6 100%);
   background-attachment: fixed;
   margin: 0;
   font-family: "Darker Grotesque";

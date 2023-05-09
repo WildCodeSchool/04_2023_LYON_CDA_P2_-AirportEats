@@ -5,49 +5,12 @@ import BackButton from "@components/BackButton";
 import { useCart } from "../context/CartContext";
 
 export default function Cart() {
-  // const { cart, handleModifyQuantity, handleDelete } = useCart();
   const { cart } = useCart();
 
   return (
     <>
-      <div
-        style={{ display: "flex", justifyContent: "right", marginRight: 50 }}
-      >
-        <BackButton />
-      </div>
-      <h1>My cart</h1>
-      {/* <div>
-        {cart.map((meal) => {
-          return (
-            <div key={meal.idMeal}>
-              <p>
-                IdMeal: {meal.idMeal}, Name: {meal.strMeal}, Quantity:
-                {meal.quantity}, Price: {meal.price}, TotalPrice:{" "}
-                {meal.totalPrice}
-              </p>
-              <button
-                type="button"
-                onClick={() =>
-                  handleModifyQuantity(meal.idMeal, meal.quantity - 1)
-                }
-              >
-                -
-              </button>
-              <button
-                type="button"
-                onClick={() =>
-                  handleModifyQuantity(meal.idMeal, meal.quantity + 1)
-                }
-              >
-                +
-              </button>
-              <button type="button" onClick={() => handleDelete(meal.idMeal)}>
-                Delete
-              </button>
-            </div>
-          );
-        })}
-      </div> */}
+      <BackButton />
+      <h1>My Cart</h1>
       <Box
         sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
       >
@@ -55,7 +18,7 @@ export default function Cart() {
           return <CartCard key={meal.idMeal} meal={meal} />;
         })}
       </Box>
-      <Typography variant="h5">
+      <Typography variant="h5" fontWeight="600">
         Total :{" "}
         {cart
           .reduce(
@@ -73,9 +36,11 @@ export default function Cart() {
         to="/payment"
         variant="contained"
         sx={{
+          color: "white",
           m: 5,
           borderRadius: 3,
           backgroundColor: "#e1b1b1",
+          width: "180px",
         }}
       >
         Confirm

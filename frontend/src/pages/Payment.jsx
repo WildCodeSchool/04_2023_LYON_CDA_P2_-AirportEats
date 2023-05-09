@@ -27,13 +27,11 @@ export default function Payment() {
 
   return (
     <>
-      <div
-        style={{ display: "flex", justifyContent: "right", marginRight: 50 }}
-      >
+      <div style={{ display: "flex", justifyContent: "left", margin: 50 }}>
         <BackButton />
       </div>
       <h1>Payment & Boarding</h1>
-      <Typography>Contact Details</Typography>
+      <Typography sx={{ fontWeight: "600" }}>Contact Details</Typography>
       <Box
         component="form"
         sx={{
@@ -66,7 +64,7 @@ export default function Payment() {
           </Select>
         </FormControl>
       </Box>
-      <Box sx={{ display: "flex", justifyContent: "center", p: 1 }}>
+      <Box sx={{ p: 1, mr: "6rem" }}>
         <TextField
           id="phone-number"
           label="Phone number"
@@ -75,14 +73,14 @@ export default function Payment() {
           required
         />
       </Box>
-      <Typography sx={{ pt: 5 }}>Payment Method</Typography>
-      <Box sx={{ display: "flex", justifyContent: "center", ml: 10 }}>
+      <Typography sx={{ pt: 5, fontWeight: "600" }}>Payment Method</Typography>
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
         <TextField
           id="card-number"
           label="Card number"
           variant="standard"
           defaultValue="4970407145623489"
-          sx={{ m: 2 }}
+          sx={{ m: 2, width: "8rem" }}
           required
         />
         <TextField
@@ -90,26 +88,29 @@ export default function Payment() {
           label="Expiry date"
           variant="standard"
           defaultValue="06/25"
-          sx={{ m: 2 }}
+          sx={{ m: 2, width: "6rem" }}
           required
         />
       </Box>
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
+      <Box sx={{ p: 1, mr: "11rem" }}>
         <TextField
           id="cryptogram"
           label="Cryptogram"
           variant="standard"
           defaultValue="123"
           required
+          sx={{ width: "5rem" }}
         />
       </Box>
       <Button
         onClick={handleSubmit}
         variant="contained"
         sx={{
+          color: "white",
           m: 5,
           borderRadius: 3,
           backgroundColor: "#e1b1b1",
+          width: "180px",
           ":hover": {
             bgcolor: "#e1b1b1",
           },
