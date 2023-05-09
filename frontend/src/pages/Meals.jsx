@@ -4,14 +4,15 @@ import { Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import MealCard from "@components/MealCard";
+import ScrollableTabsButton from "@components/ScrollableTabsButton";
 
 export default function Meals() {
   const { category } = useParams();
-  // Déstructuration ???
   const { meals } = useLoaderData();
 
   return (
     <>
+      <ScrollableTabsButton />
       <Typography
         variant="h5"
         sx={{ fontWeight: "600", margin: "50px", textAlign: "left" }}

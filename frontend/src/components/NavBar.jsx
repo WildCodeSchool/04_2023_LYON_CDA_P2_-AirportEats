@@ -21,9 +21,9 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import Badge from "@mui/material/Badge";
 import { Link } from "react-router-dom";
-import PlaneLogo from "../assets/airplaneAE.png";
-import TitlePNG from "../assets/AEatsLogo.png";
+import { Icon } from "@mui/material";
 import { useCart } from "../context/CartContext";
+import LogoTitle from "./LogoTitle";
 
 const drawerWidth = 240;
 
@@ -82,16 +82,19 @@ export default function PersistentDrawerLeft() {
       id: 0,
       text: "Home",
       link: "/",
+      icon: HomeOutlinedIcon,
     },
     {
       id: 1,
       text: "Cart",
       link: "/cart",
+      icon: ShoppingCartOutlinedIcon,
     },
     {
       id: 2,
       text: "Favorites",
       link: "/favorites",
+      icon: FavoriteBorderOutlinedIcon,
     },
   ];
 
@@ -116,38 +119,11 @@ export default function PersistentDrawerLeft() {
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
-            sx={{ mr: 2, ...(open && { display: "none" }) }}
+            sx={{ mr: 1, ...(open && { display: "none" }) }}
           >
             <MenuIcon />
           </IconButton>
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-            }}
-            component={Link}
-            to="/"
-          >
-            <Box
-              sx={{
-                background: `url(${PlaneLogo})`,
-                backgroundSize: "contain",
-                backgroundRepeat: "no-repeat",
-                width: 25,
-                height: 25,
-                marginRight: 1,
-              }}
-            />
-            <Box
-              sx={{
-                background: `url(${TitlePNG})`,
-                backgroundSize: "contain",
-                backgroundRepeat: "no-repeat",
-                width: 120,
-                height: 25,
-              }}
-            />
-          </Box>
+          <LogoTitle />
           <Box sx={{ flexGrow: 1 }} />
           <IconButton
             size="large"
@@ -201,9 +177,7 @@ export default function PersistentDrawerLeft() {
                 to={item.link}
               >
                 <ListItemIcon>
-                  {item.id === 0 && <HomeOutlinedIcon />}
-                  {item.id === 1 && <ShoppingCartOutlinedIcon />}
-                  {item.id === 2 && <FavoriteBorderOutlinedIcon />}
+                  <Icon component={item.icon} />
                 </ListItemIcon>
                 <ListItemText primary={item.text} />
               </ListItemButton>

@@ -4,7 +4,6 @@ import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardActions from "@mui/material/CardActions";
 import Avatar from "@mui/material/Avatar";
-// import FavoriteIcon from "@mui/icons-material/Favorite";
 import PropTypes from "prop-types";
 import { Typography, useMediaQuery } from "@mui/material";
 import FavoriteToggleButton from "./FavoriteToggleButton";
@@ -68,7 +67,7 @@ export default function MealCard({ meal }) {
           onClick={handleOpen}
         />
         <CardActions sx={{ display: "flex", justifyContent: "flex-end", p: 1 }}>
-          <FavoriteToggleButton />
+          <FavoriteToggleButton meal={meal} />
         </CardActions>
       </Card>
 

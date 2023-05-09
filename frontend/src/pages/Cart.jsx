@@ -5,47 +5,12 @@ import BackButton from "@components/BackButton";
 import { useCart } from "../context/CartContext";
 
 export default function Cart() {
-  // const { cart, handleModifyQuantity, handleDelete } = useCart();
   const { cart } = useCart();
 
   return (
     <>
-      <div style={{ display: "flex", justifyContent: "left", margin: 50 }}>
-        <BackButton />
-      </div>
+      <BackButton />
       <h1>My Cart</h1>
-      {/* <div>
-        {cart.map((meal) => {
-          return (
-            <div key={meal.idMeal}>
-              <p>
-                IdMeal: {meal.idMeal}, Name: {meal.strMeal}, Quantity:
-                {meal.quantity}, Price: {meal.price}, TotalPrice:{" "}
-                {meal.totalPrice}
-              </p>
-              <button
-                type="button"
-                onClick={() =>
-                  handleModifyQuantity(meal.idMeal, meal.quantity - 1)
-                }
-              >
-                -
-              </button>
-              <button
-                type="button"
-                onClick={() =>
-                  handleModifyQuantity(meal.idMeal, meal.quantity + 1)
-                }
-              >
-                +
-              </button>
-              <button type="button" onClick={() => handleDelete(meal.idMeal)}>
-                Delete
-              </button>
-            </div>
-          );
-        })}
-      </div> */}
       <Box
         sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
       >

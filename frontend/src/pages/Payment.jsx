@@ -7,6 +7,7 @@ import Select from "@mui/material/Select";
 import { useState } from "react";
 import { Button, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { enqueueSnackbar } from "notistack";
 import BackButton from "@components/BackButton";
 
 export default function Payment() {
@@ -17,6 +18,7 @@ export default function Payment() {
     event.preventDefault();
     const path = `/confirmation`;
     navigate(path);
+    return enqueueSnackbar("Command confirmed", { variant: "success" });
   };
 
   const handleChange = (event) => {
@@ -62,7 +64,7 @@ export default function Payment() {
           </Select>
         </FormControl>
       </Box>
-      <Box sx={{ display: "flex", justifyContent: "center", p: 1 }}>
+      <Box sx={{ p: 1, mr: "6rem" }}>
         <TextField
           id="phone-number"
           label="Phone number"
@@ -72,13 +74,13 @@ export default function Payment() {
         />
       </Box>
       <Typography sx={{ pt: 5, fontWeight: "600" }}>Payment Method</Typography>
-      <Box sx={{ display: "flex", justifyContent: "center", ml: 10 }}>
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
         <TextField
           id="card-number"
           label="Card number"
           variant="standard"
           defaultValue="4970407145623489"
-          sx={{ m: 2 }}
+          sx={{ m: 2, width: "8rem" }}
           required
         />
         <TextField
@@ -86,17 +88,18 @@ export default function Payment() {
           label="Expiry date"
           variant="standard"
           defaultValue="06/25"
-          sx={{ m: 2 }}
+          sx={{ m: 2, width: "6rem" }}
           required
         />
       </Box>
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
+      <Box sx={{ p: 1, mr: "11rem" }}>
         <TextField
           id="cryptogram"
           label="Cryptogram"
           variant="standard"
           defaultValue="123"
           required
+          sx={{ width: "5rem" }}
         />
       </Box>
       <Button
