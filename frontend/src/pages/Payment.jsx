@@ -18,7 +18,7 @@ export default function Payment() {
     event.preventDefault();
     const path = `/confirmation`;
     navigate(path);
-    return enqueueSnackbar("Command confirmed", { variant: "success" });
+    return enqueueSnackbar("Order confirmed", { variant: "success" });
   };
 
   const handleChange = (event) => {
