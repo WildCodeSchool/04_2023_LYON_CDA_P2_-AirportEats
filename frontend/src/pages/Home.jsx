@@ -1,36 +1,30 @@
-import Counter from "../components/Counter";
-import logo from "../assets/logo.svg";
+import ScrollableTabsButton from "@components/ScrollableTabsButton";
+import { Box, Link, Typography } from "@mui/material";
+import LogoAPI from "../assets/MealDB-Logo.png";
 
 export default function Home() {
   return (
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <p>Hello Vite + React !</p>
-
-      <Counter />
-
-      <p>
-        Edit <code>App.jsx</code> and save to test HMR updates.
-      </p>
-      <p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        {" | "}
-        <a
-          className="App-link"
-          href="https://vitejs.dev/guide/features.html"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Vite Docs
-        </a>
-      </p>
-    </header>
+    <>
+      <ScrollableTabsButton />
+      <Box
+        component={Link}
+        href="https://www.themealdb.com/api.php"
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        margin={8}
+      >
+        <Box
+          sx={{
+            background: `url(${LogoAPI})`,
+            backgroundSize: "contain",
+            backgroundRepeat: "no-repeat",
+            height: 40,
+            width: 240,
+          }}
+        />
+        <Typography variant="body1">Used TheMealDB API</Typography>
+      </Box>
+    </>
   );
 }
